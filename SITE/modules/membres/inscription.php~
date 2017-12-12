@@ -1,0 +1,10 @@
+
+<?php
+// Affichage du formulaire
+include CHEMIN_VUE.'formulaire_inscription.php';
+?>
+<h2>Inscription au site</h2>
+
+<?php
+
+echo $form_inscription;
