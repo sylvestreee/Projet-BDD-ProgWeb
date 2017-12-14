@@ -15,6 +15,8 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])) {
     
     $infos_utilisateur = lire_infos_utilisateur($_GET['id']);
     
+    var_dump($infos_utilisateur);
+    
     // Si le profil existe
     if (false !== $infos_utilisateur) {
         list($nom_utilisateur, $adresse_email, ) = $infos_utilisateur;
