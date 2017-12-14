@@ -1,12 +1,13 @@
 <?php
 
-if (!utilisateur_est_connecte()) {
-
+if (!utilisateur_est_connecte()) 
+{
 	// On affiche la page d'erreur comme quoi l'utilisateur doit être connecté pour voir la page
-	include CHEMIN_VUE_GLOBALE.'erreur_non_connecte.php';
-	
-} else {
+	include CHEMIN_VUE_GLOBALE.'erreur_non_connecte.php';	
+} 
 
+else 
+{
 	include CHEMIN_LIB.'form.php';
 
 	//recette
@@ -37,7 +38,7 @@ if (!utilisateur_est_connecte()) {
 
 	//etape
 
-	$crea_etape = new Form('creation_etape');
+	/*$crea_etape = new Form('creation_etape');
 
 	$crea_etape   ->method('POST');
 
@@ -94,9 +95,9 @@ if (!utilisateur_est_connecte()) {
 					   ->label("Régime");
 
 	$crea_ingredient   ->add('Submit', 'ingredient')
-					   ->value("Sauvegarder l'ingrédient");
+					   ->value("Sauvegarder l'ingrédient");*/
 
 	include CHEMIN_VUE.'recette.php';
-	include CHEMIN_VUE.'etape.php';
-	include CHEMIN_VUE.'ingredient.php';
+	//include CHEMIN_VUE.'etape.php';
+	//include CHEMIN_VUE.'ingredient.php';
 }
