@@ -4,7 +4,7 @@ function combinaison_connexion_valide($nom_utilisateur, $mot_de_passe) {
 
 	$pdo = PDO2::getInstance();
 
-	$requete = $pdo->prepare("SELECT id_utilisateur FROM utilisateur
+	$requete = $pdo->prepare("SELECT id_utilisateur FROM UTILISATEUR
 		WHERE
 		login = :nom_utilisateur AND 
 		mdp = :mot_de_passe");
