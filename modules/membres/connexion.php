@@ -1,7 +1,6 @@
 <?php
 
-// Initialisation
-include 'global/init.php';
+session_start();
 
 	// Vérification des droits d'accès de la page
 	if (utilisateur_est_connecte()) {

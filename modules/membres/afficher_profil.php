@@ -1,7 +1,6 @@
 <?php
 
-// Initialisation
-include 'global/init.php';
+session_start();
 
 // Pas de vérification de droits d'accès nécessaire
 
