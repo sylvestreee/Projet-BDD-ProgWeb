@@ -5,14 +5,14 @@ session_start();
 // Pas de vérification de droits d'accès nécessaire
 
 // Si le paramètre id est manquant ou invalide
-if (empty($_GET[$_SESSION['id']])) {
+if (empty($_SESSION['id'])) {
 
     include CHEMIN_VUE.'erreur_parametre_profil.php';
 
 } else {
 
     include CHEMIN_MODELE.'membres.php'; 
-    $infos_utilisateur = lire_infos_utilisateur($_GET[$_SESSION['id']]);
+    $infos_utilisateur = lire_infos_utilisateur($_SESSION['id']);
         
     // Si le profil existe
     if (false !== $infos_utilisateur) {
