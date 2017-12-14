@@ -20,6 +20,7 @@
 		<li><a href="index.php?module=membres&amp;action=deconnexion">Déconnexion</a></li>
 		<li><a href="index.php?module=membres&amp;action=afficher_profil">Profil</a></a></li>
 		<li><a href="index.php?module=membres&amp;action=creation_recette">Creation de recette</a></a></li>
+		<li><a href="index.php?module=membres&amp;action=recherche_recette">Recherche d'une recette</a></li>
 	</ul>
 	<?php } ?>
 </div>
