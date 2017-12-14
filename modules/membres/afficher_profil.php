@@ -12,7 +12,7 @@ if (empty($_GET[$_SESSION['id']])) {
 } else {
 
     include CHEMIN_MODELE.'membres.php'; 
-    $infos_utilisateur = lire_infos_utilisateur($_GET['id']);
+    $infos_utilisateur = lire_infos_utilisateur($_GET[$_SESSION['id']]);
         
     // Si le profil existe
     if (false !== $infos_utilisateur) {
