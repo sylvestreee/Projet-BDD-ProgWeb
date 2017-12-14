@@ -9,6 +9,6 @@
 	<link rel="stylesheet" href="style/global.css" type="text/css" media="screen" />
 </head>
 <body>
-	<h1>Trouvez des recettes et contribuer à leur création !</h1>
+	<h1>Trouvez des recettes et contribuez à leur création !</h1>
 	<?php include 'global/menu.php'; ?>
 	<div id="centre">
