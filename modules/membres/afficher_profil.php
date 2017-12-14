@@ -1,5 +1,8 @@
 <?php
 
+// Initialisation
+include 'global/init.php';
+
 // Pas de vérification de droits d'accès nécessaire
 
 // Si le paramètre id est manquant ou invalide
@@ -9,7 +12,7 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])) {
 
 } else {
 
-    include CHEMIN_MODELE.'membres.php';
+    include CHEMIN_MODELE.'membres.php'; //<3 ne pas laisser les gens modifier ton code pendant que tu es parti :D
     
     $infos_utilisateur = lire_infos_utilisateur($_GET['id']);
     
