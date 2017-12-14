@@ -5,13 +5,13 @@ session_start();
 // Pas de vérification de droits d'accès nécessaire
 
 // Si le paramètre id est manquant ou invalide
-if (empty($_GET['id']) or !is_numeric($_GET['id'])) {
+if (empty($_GET['pseudo'])) {
 
     include CHEMIN_VUE.'erreur_parametre_profil.php';
 
 } else {
 
-    include CHEMIN_MODELE.'membres.php'; //<3 ne pas laisser les gens modifier ton code pendant que tu es parti :D
+    include CHEMIN_MODELE.'membres.php'; 
     
     $infos_utilisateur = lire_infos_utilisateur($_GET['id']);
         
