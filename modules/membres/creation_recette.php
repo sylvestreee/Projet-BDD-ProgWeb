@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (!utilisateur_est_connecte()) 
 {
 	// On affiche la page d'erreur comme quoi l'utilisateur doit être connecté pour voir la page
@@ -36,7 +38,85 @@ else
 	$crea_recette 	->add('Submit', 'recette')
 					->value("Sauvegarder la recette");
 
-	//etape
+	include CHEMIN_VUE.'recette.php';
+	/*
+	// Création d'un tableau des erreurs
+	$erreurs_inscription = array();
+
+	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
+	if ($form_inscription->is_valid($_POST)) {
+
+		// On vérifie si les deux mots de passe correspondent
+		if ($form_inscription->get_cleaned_data('mdp') != 
+		$form_inscription->get_cleaned_data('mdp_verif')) {
+			$erreurs_inscription[] = "Les deux mots de passes entrés sont différents !";
+		}
+
+		// Si d'autres erreurs ne sont pas survenues
+		if (empty($erreurs_inscription)) {
+
+
+			// Tentative d'ajout du membre dans la base de données
+			list($nom_utilisateur, $prenom, $nom, $mot_de_passe, $adresse_email) =
+			$form_inscription->get_cleaned_data('nom_utilisateur','prenom','nom', 'mdp', 'adresse_email');
+
+			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
+			include CHEMIN_MODELE.'recette.php';
+
+			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
+			$id_utilisateur = ajouter_membre_dans_bdd($nom_utilisateur, $prenom, $nom, sha1($mot_de_passe),
+			$adresse_email);
+
+			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
+			if (ctype_digit($id_recette)) 
+			{
+				// Affichage de la confirmation de l'inscription
+				include CHEMIN_VUE.'recette_effectuee.php';
+			// Gestion des doublons
+			} 
+			else 
+			{
+				// Changement de nom de variable (plus lisible)
+				$erreur =& $id_recette;
+
+				// On vérifie que l'erreur concerne bien un doublon
+				if (23000 == $erreur[0]) 
+				{	
+					// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
+					preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+					$valeur_probleme = $valeur_probleme[1];
+					if ($nom_recette == $valeur_probleme) 
+					{
+						$erreurs_inscription[] = "Ce nom de recette est déjà utilisé.";
+					} 
+					else 
+					{
+						$erreurs_inscription[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+						var_dump($valeur_probleme);
+					}
+				} 
+				else 
+				{
+					$erreurs_inscription[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+				}
+				// On réaffiche le formulaire de création de recettes
+				include CHEMIN_VUE.'recette.php';
+			}
+		} 
+		else 
+		{
+			// On affiche à nouveau le formulaire de création de recettes
+			include CHEMIN_VUE.'recette.php';
+		}
+	} 
+	else 
+	{
+		// On affiche à nouveau le formulaire de création de recettes
+		include CHEMIN_VUE.'recette.php';
+	}*/
+}
+
+//etape
 
 	/*$crea_etape = new Form('creation_etape');
 
@@ -95,9 +175,7 @@ else
 					   ->label("Régime");
 
 	$crea_ingredient   ->add('Submit', 'ingredient')
-					   ->value("Sauvegarder l'ingrédient");*/
+					   ->value("Sauvegarder l'ingrédient");
 
-	include CHEMIN_VUE.'recette.php';
-	//include CHEMIN_VUE.'etape.php';
-	//include CHEMIN_VUE.'ingredient.php';
-}
+	include CHEMIN_VUE.'etape.php';
+	include CHEMIN_VUE.'ingredient.php';*/
