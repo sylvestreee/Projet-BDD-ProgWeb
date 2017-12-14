@@ -6,7 +6,7 @@ function ajouter_membre_dans_bdd($nom_utilisateur, $prenom, $nom, $mdp, $adresse
 
 	$requete = $pdo->prepare("INSERT INTO UTILISATEUR SET
 		login 	= :nom_utilisateur,
-		prenom 	= :prenom
+		prenom 	= :prenom,
 		nom 	= :nom,
 		mdp 	= :mot_de_passe,
 		email 	= :adresse_email");
