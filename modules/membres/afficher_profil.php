@@ -14,9 +14,7 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])) {
     include CHEMIN_MODELE.'membres.php'; //<3 ne pas laisser les gens modifier ton code pendant que tu es parti :D
     
     $infos_utilisateur = lire_infos_utilisateur($_GET['id']);
-    
-    var_dump($infos_utilisateur);
-    
+        
     // Si le profil existe
     if (false !== $infos_utilisateur) {
         list($nom_utilisateur, $adresse_email, ) = $infos_utilisateur;
