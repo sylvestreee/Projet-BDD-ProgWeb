@@ -53,9 +53,7 @@ session_start();
 				$_SESSION['id']     = $id_utilisateur;
 				$_SESSION['pseudo'] = $nom_utilisateur;
 				$_SESSION['email']  = $infos_utilisateur['adresse_email'];
-				
-				var_dump($_SESSION);
-		
+						
 				// Affichage de la confirmation de la connexion
 				include CHEMIN_VUE.'connexion_effectuee.php';
 	
