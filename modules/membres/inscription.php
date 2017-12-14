@@ -19,6 +19,12 @@ session_start();
 
 		$form_inscription->add('Text', 'nom_utilisateur')
 						 ->label("Votre nom d'utilisateur");
+		
+		$form_inscription->add('Text', 'prenom')
+						 ->label("Votre prenom");
+						 
+		$form_inscription->add('Text', 'nom')
+						 ->label("Votre nom");
 	
 		$form_inscription->add('Password', 'mdp')
 						 ->label("Votre mot de passe");
@@ -52,14 +58,14 @@ session_start();
 
 
 				// Tentative d'ajout du membre dans la base de données
-				list($nom_utilisateur, $mot_de_passe, $adresse_email) =
-				$form_inscription->get_cleaned_data('nom_utilisateur', 'mdp', 'adresse_email');
+				list($nom_utilisateur, $prenom, $nom, $mot_de_passe, $adresse_email) =
+				$form_inscription->get_cleaned_data('nom_utilisateur','prenom','nom', 'mdp', 'adresse_email');
 
 				// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 				include CHEMIN_MODELE.'inscription.php';
 
 				// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-				$id_utilisateur = ajouter_membre_dans_bdd($nom_utilisateur, sha1($mot_de_passe),
+				$id_utilisateur = ajouter_membre_dans_bdd($nom_utilisateur, $prenom, $nom, sha1($mot_de_passe),
 				$adresse_email);
 
 				// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
