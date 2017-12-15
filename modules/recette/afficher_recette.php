@@ -24,17 +24,16 @@ $erreurs_recherche = array();
 // Validation des champs suivant les règles
 if ($form_recherche_nom->is_valid($_POST)) {
 	
-	echo "bla ";
 	$phrase = $form_recherche_nom->get_cleaned_data('phrase');
-	
-	echo $phrase;
 	
 	include CHEMIN_MODELE.'recette.php';
 	
 	//$id_recette = recherche_recette_par_nom($phrase);
 	
 
-	$id_recette = mysql_query("SELECT id_recette,nom_recette FROM RECETTE WHERE nom_recette like '%carbo%'");
+	$id_recette = mysql_query("SELECT nom_recette FROM RECETTE WHERE id_recette = '4'");
+	
+	echo $id_recette;
 	
 	while($row=mysql_fetch_array($id_recette,MYSQL_ASSOC))
 	{
