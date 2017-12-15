@@ -32,10 +32,10 @@ function recherche_recette_par_nom($phrase)
 {
 	$pdo = PDO2::getInstance();
 	
-	$requete = $pdo->prepare("SELECT id_recette 
+	$requete = $pdo->prepare("SELECT id_recette,nom_recette 
 		FROM RECETTE
 		WHERE 
-		nom_recette LIKE '%:phrase%'");
+		id_recette = 2");
 
 	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
