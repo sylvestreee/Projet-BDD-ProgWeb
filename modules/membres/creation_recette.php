@@ -101,11 +101,15 @@ else
 					else 
 					{
 						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+<<<<<<< HEAD
 						var_dump($valeur_probleme);
 <<<<<<< HEAD
 						echo "yes26";
 =======
 >>>>>>> fb9f792f1d733e9ae1605ac398d42dbd89b2784e
+=======
+						//var_dump($valeur_probleme);
+>>>>>>> d18deef14a678b06023c555d03cedbe8feacda86
 					}
 				} 
 				else 
