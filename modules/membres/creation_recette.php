@@ -24,11 +24,11 @@ else
 	$crea_recette   ->add('Textarea', 'descriptif')
 					->label("Descriptif");
 
-	$crea_recette   ->add('Select', 'difficulte')
+	$crea_recette   ->add('Radio', 'difficulte')
 					->choices(array('Très facile', 'Facile', 'Moyen', 'Difficile'))
 					->label("Difficulté");
 
-	$crea_recette   ->add('Select', 'prix')
+	$crea_recette   ->add('Radio', 'prix')
 					->choices(array('1', '2', '3', '4', '5'))
 					->label("Prix");
 
