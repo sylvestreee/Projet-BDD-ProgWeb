@@ -111,18 +111,21 @@ else
 				}
 				// On réaffiche le formulaire de création de recettes
 				include CHEMIN_VUE.'recette.php';
+				echo "yes3";
 			}
 		} 
 		else 
 		{
 			// On affiche à nouveau le formulaire de création de recettes
 			include CHEMIN_VUE.'recette.php';
+			echo "yes4";
 		}
 	} 
 	else 
 	{
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
+		echo "yes5";
 	}
 }
 
