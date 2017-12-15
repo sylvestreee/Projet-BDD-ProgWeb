@@ -37,35 +37,33 @@ else
 
 	$crea_recette 	->add('Submit', 'recette')
 					->value("Sauvegarder la recette");
-
-	include CHEMIN_VUE.'recette.php';
-	/*
+	
 	// Création d'un tableau des erreurs
 	$erreurs_inscription = array();
 
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
-	if ($form_inscription->is_valid($_POST)) {
+	if ($form_inscription->is_valid($_POST)) 
+	{
 
-		// On vérifie si les deux mots de passe correspondent
-		if ($form_inscription->get_cleaned_data('mdp') != 
-		$form_inscription->get_cleaned_data('mdp_verif')) {
-			$erreurs_inscription[] = "Les deux mots de passes entrés sont différents !";
+		// On vérifie si nb_personnes est bien un nombre (is_numeric)
+		if (is_numeric($crea_recette->get_cleaned_data('nb_personnes')))
+		{
+			$erreurs_inscription[] = "Vous n'avez pas entré un nombre de personnes valide";
 		}
 
 		// Si d'autres erreurs ne sont pas survenues
-		if (empty($erreurs_inscription)) {
-
-
-			// Tentative d'ajout du membre dans la base de données
-			list($nom_utilisateur, $prenom, $nom, $mot_de_passe, $adresse_email) =
-			$form_inscription->get_cleaned_data('nom_utilisateur','prenom','nom', 'mdp', 'adresse_email');
+		if (empty($erreurs_inscription)) 
+		{
+			// Tentative d'ajout du membre dans la base de données (récup id et login)
+			list($nom_recette, $descriptif, $id_utilisateur, $auteur, $difficulte, $prix, $nb_personnes) =
+			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', 'id_utilisateur', 'auteur', 'difficulte', 'prix', 'nb_personnes');
 
 			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 			include CHEMIN_MODELE.'recette.php';
 
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-			$id_utilisateur = ajouter_membre_dans_bdd($nom_utilisateur, $prenom, $nom, sha1($mot_de_passe),
-			$adresse_email);
+			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $id_utilisateur, 
+			$auteur, $difficulte, $prix, $nb_personnes);
 
 			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 			if (ctype_digit($id_recette)) 
