@@ -13,12 +13,10 @@ if (empty($_SESSION['id'])) {
 
     include CHEMIN_MODELE.'membres.php'; 
     $infos_utilisateur = lire_infos_utilisateur($_SESSION['id']);
-    
-    var_dump($infos_utilisateur);
         
     // Si le profil existe
     if (false !== $infos_utilisateur) {
-        list($nom_utilisateur, $adresse_email, ) = $infos_utilisateur;
+        list($nom_utilisateur, $email, ) = $infos_utilisateur;
         include CHEMIN_VUE.'profil_infos_utilisateur.php';
 
     } else {
