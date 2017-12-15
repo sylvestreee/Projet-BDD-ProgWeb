@@ -16,7 +16,7 @@ function combinaison_connexion_valide($nom_utilisateur, $mot_de_passe) {
 	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
 	
 		$requete->closeCursor();
-		return $result['id'];
+		return $result['id_utilisateur'];
 	}
 	return false;
 }
