@@ -12,9 +12,9 @@ if (empty($_SESSION['id'])) {
 } else {
 
     include CHEMIN_MODELE.'membres.php'; 
-    $infos_utilisateur = lire_infos_utilisateur($_SESSION['id']);
+    $infos_utilisateur = lire_infos_utilisateur((int)$_SESSION['id']);
     
-    var_dump($_SESSION['id']);
+    var_dump((int)$_SESSION['id']);
         
     // Si le profil existe
     if (false !== $infos_utilisateur) {
