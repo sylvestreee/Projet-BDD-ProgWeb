@@ -26,16 +26,12 @@ else
 
 	$crea_recette   ->add('Select', 'difficulte')
 					->choices(array(
-					'Europe' => array(
-					'fr' => 'France',
-					'de' => 'Allemagne'
-					),
-					'Asie' => array(
-					'cn' => 'Chine',
-					'jp' => 'Japon'
-					)
-				))
-				->label("Difficulte");
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+					'4' => '4',
+					'5' => '5'))
+					->label("Difficulté");
 
 	$crea_recette   ->add('Select', 'prix')
 					->choices(array(
