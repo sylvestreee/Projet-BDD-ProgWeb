@@ -54,16 +54,16 @@ else
 		// Si d'autres erreurs ne sont pas survenues
 		if (empty($erreurs_inscription)) 
 		{
-			// Tentative d'ajout du membre dans la base de données (récup id et login)
-			list($nom_recette, $descriptif, $id_utilisateur, $auteur, $difficulte, $prix, $nb_personnes) =
-			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', 'id_utilisateur', 'auteur', 'difficulte', 'prix', 'nb_personnes');
+			// Tentative d'ajout du membre dans la base de données
+			list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
+			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
 
 			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 			include CHEMIN_MODELE.'recette.php';
 
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $id_utilisateur, 
-			$auteur, $difficulte, $prix, $nb_personnes);
+			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
+			$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
 
 			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 			if (ctype_digit($id_recette)) 
@@ -111,7 +111,7 @@ else
 	{
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
-	}*/
+	}
 }
 
 //etape
