@@ -47,7 +47,7 @@ else
 					->value("Sauvegarder la recette");
 	
 	// Création d'un tableau des erreurs
-	$erreurs_inscription = array();
+	$erreurs_recette = array();
 
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
 	if ($crea_recette->is_valid($_POST)) 
@@ -56,12 +56,12 @@ else
 		// On vérifie si nb_personnes est bien un nombre (is_numeric)
 		if (is_numeric($crea_recette->get_cleaned_data('nb_personnes')))
 		{
-			$erreurs_inscription[] = "Vous n'avez pas entré un nombre de personnes valide";
+			$erreurs_recette[] = "Vous n'avez pas entré un nombre de personnes valide";
 			echo "yes";
 		}
 
 		// Si d'autres erreurs ne sont pas survenues
-		if (empty($erreurs_inscription)) 
+		if (empty($erreurs_recette)) 
 		{
 			echo "yes2";
 			// Tentative d'ajout du membre dans la base de données
@@ -97,17 +97,17 @@ else
 					$valeur_probleme = $valeur_probleme[1];
 					if ($nom_recette == $valeur_probleme) 
 					{
-						$erreurs_inscription[] = "Ce nom de recette est déjà utilisé.";
+						$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
 					} 
 					else 
 					{
-						$erreurs_inscription[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 						var_dump($valeur_probleme);
 					}
 				} 
 				else 
 				{
-					$erreurs_inscription[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+					$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 				}
 				// On réaffiche le formulaire de création de recettes
 				include CHEMIN_VUE.'recette.php';
