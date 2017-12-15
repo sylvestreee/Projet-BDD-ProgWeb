@@ -14,6 +14,10 @@ $form_recherche_nom->method('POST');
 $form_recherche_nom->add('Text', 'phrase')
 			   ->label("Rechercher une recette");
 
+$form_inscription->add('Submit', 'submit')
+				 ->value("Recherche d'une recette");
+	
+
 // Création d'un tableau des erreurs
 $erreurs_recherche = array();
 
