@@ -30,12 +30,6 @@ if ($form_recherche_nom->is_valid($_POST)) {
 	
 	$id_recette = recherche_recette_par_nom($phrase);
 	
-	var_dump($id_recette);
-		
-	while($row=mysql_fetch_array($id_recette,MYSQL_ASSOC))
-	{
-		printf("%s",$row["id_recette"]);
-	}
 	
 	include CHEMIN_VUE.'resultat.php';		
 	
