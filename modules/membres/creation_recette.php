@@ -88,6 +88,7 @@ else
 			{
 				// Affichage de la confirmation de l'inscription
 				include CHEMIN_VUE.'recette_effectuee.php';
+				echo "yes24";
 			// Gestion des doublons
 			} 
 			else 
@@ -104,11 +105,13 @@ else
 					if ($nom_recette == $valeur_probleme) 
 					{
 						$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
+						echo "yes25";
 					} 
 					else 
 					{
 						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 						var_dump($valeur_probleme);
+						echo "yes26";
 					}
 				} 
 				else 
