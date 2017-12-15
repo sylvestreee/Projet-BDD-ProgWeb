@@ -54,12 +54,13 @@ else
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
 	if ($crea_recette->is_valid($_POST)) 
 	{
-		// On vérifie si nb_personnes est bien un nombre (is_numeric)
-		if (ctype_digit($crea_recette->get_cleaned_data('nb_personnes')))
-		{
-			$erreurs_recette[] = "Vous n'avez pas entré un nombre de personnes valide";
-			//echo $crea_recette->get_cleaned_data('nb_personnes');
-		}
+		/*ne fonctionne pas
+			// On vérifie si nb_personnes est bien un nombre
+			if (ctype_digit($crea_recette->get_cleaned_data('nb_personnes')))
+			{
+				$erreurs_recette[] = "Vous n'avez pas entré un nombre de personnes valide";
+			}
+		*/
 
 		// Si d'autres erreurs ne sont pas survenues
 		if (empty($erreurs_recette)) 
