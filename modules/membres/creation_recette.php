@@ -26,7 +26,6 @@ else
 
 	$crea_recette   ->add('Select', 'difficulte')
 					->choices(array(
-					'tf' => 'Tres_facile',
 					'f' => 'Facile',
 					'm' => 'Moyen',
 					'd' => 'Difficile'))
