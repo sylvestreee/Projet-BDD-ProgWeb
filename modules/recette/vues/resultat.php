@@ -4,4 +4,5 @@
 foreach($id_recette as $r)
 {
 	echo $r;
+	var_dump($r);
 }
