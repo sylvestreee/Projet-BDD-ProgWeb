@@ -90,7 +90,6 @@ session_start();
 							$erreurs_inscription[] = "Cette adresse e-mail est déjà utilisée.";
 						} else {
 							$erreurs_inscription[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
-							var_dump($valeur_probleme);
 						}
 					} else {
 						$erreurs_inscription[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
