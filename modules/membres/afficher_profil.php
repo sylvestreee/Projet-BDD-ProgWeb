@@ -12,7 +12,7 @@ if (empty($_SESSION['id'])) {
 } else {
 
     include CHEMIN_MODELE.'membres.php'; 
-    $infos_utilisateur = lire_infos_utilisateur(2);
+    $infos_utilisateur = lire_infos_utilisateur('2');
     
     var_dump($infos_utilisateur);
         
