@@ -24,12 +24,12 @@ else
 	$crea_recette   ->add('Textarea', 'descriptif')
 					->label("Descriptif");
 
-	/*$crea_recette   ->add('Select', 'difficulte')
+	$crea_recette   ->add('Select', 'difficulte')
 					->choices(array(
 					'f' => 'Facile',
 					'm' => 'Moyen',
 					'd' => 'Difficile'))
-					->label("Difficulté");*/
+					->label("Difficulté");
 
 	$crea_recette   ->add('Select', 'prix')
 					->choices(array(
@@ -63,32 +63,24 @@ else
 		// Si d'autres erreurs ne sont pas survenues
 		if (empty($erreurs_recette)) 
 		{
-			echo "yes2";
 			// Tentative d'ajout du membre dans la base de données
-			list($nom_recette, $descriptif/*, $difficulte*/, $prix, $nb_personnes) =
-			$crea_recette->get_cleaned_data('nom_recette', 'descriptif', /*'difficulte',*/ 'prix', 'nb_personnes');
+			list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
+			$crea_recette->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
 
 			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 			include CHEMIN_MODELE.'recette.php';
-			
-			echo "yes21";
 
 			$difficulte = 'Facile';
-
-			echo "yes22";
 
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
 			$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
-
-			echo "yes23";
 
 			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 			if (ctype_digit($id_recette)) 
 			{
 				// Affichage de la confirmation de l'inscription
 				include CHEMIN_VUE.'recette_effectuee.php';
-				echo "yes24";
 			// Gestion des doublons
 			} 
 			else 
@@ -105,13 +97,15 @@ else
 					if ($nom_recette == $valeur_probleme) 
 					{
 						$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
-						echo "yes25";
 					} 
 					else 
 					{
 						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 						var_dump($valeur_probleme);
+<<<<<<< HEAD
 						echo "yes26";
+=======
+>>>>>>> fb9f792f1d733e9ae1605ac398d42dbd89b2784e
 					}
 				} 
 				else 
@@ -120,21 +114,18 @@ else
 				}
 				// On réaffiche le formulaire de création de recettes
 				include CHEMIN_VUE.'recette.php';
-				echo "yes3";
 			}
 		} 
 		else 
 		{
 			// On affiche à nouveau le formulaire de création de recettes
 			include CHEMIN_VUE.'recette.php';
-			echo "yes4";
 		}
 	} 
 	else 
 	{
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
-		echo "yes5";
 	}
 }
 
