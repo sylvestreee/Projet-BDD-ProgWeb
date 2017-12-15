@@ -38,6 +38,9 @@ function recherche_recette_par_nom($phrase)
 		nom_recette like '%:phrase%'");
 
 	$requete->bindValue(':phrase', $phrase);
+	
+	var_dump($requete);
+	
 	$requete->execute();
 	
 	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
