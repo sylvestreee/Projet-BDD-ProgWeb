@@ -133,7 +133,7 @@ else
 
 	//sélectionne un ingrédient
 
-	$crea_etape   ->add('Text', 'quantite')
+	$crea_etape   ->add('Text', 'quantite_etape')
 				  ->label("Quantité d'ingrédients");
 
 	$crea_etape   ->add('Text', 'temps')
@@ -149,7 +149,75 @@ else
 	$crea_etape   ->add('Submit', 'etape')
 				  ->value("Sauvegarder l'étape");
 				  
-	include CHEMIN_VUE.'etape.php';
+	// Création d'un tableau des erreurs
+	$erreurs_etape = array();
+
+	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
+	if ($crea_etape->is_valid($_POST)) 
+	{
+		// Si d'autres erreurs ne sont pas survenues
+		if (empty($erreurs_etape)) 
+		{
+			// Tentative d'ajout du membre dans la base de données
+			list($quantite_etape, $temps, $type_etape, $description) =
+			$crea_etape->get_cleaned_data('quantite_etape', 'temps', 'type_etape', 'description');
+
+			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
+			include CHEMIN_MODELE.'etape.php';
+
+			$id_recette = 4;
+			$id_ingr = 1;
+
+			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
+			$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
+
+			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
+			if (ctype_digit($id_etape)) 
+			{
+				// Affichage de la confirmation de l'inscription
+				include CHEMIN_VUE.'etape_effectuee.php';
+			// Gestion des doublons
+			} 
+			else 
+			{
+				// Changement de nom de variable (plus lisible)
+				$erreur =& $id_etape;
+
+				// On vérifie que l'erreur concerne bien un doublon
+				if (23000 == $erreur[0]) 
+				{	
+					// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
+					preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+					$valeur_probleme = $valeur_probleme[1];
+					if ($nom_etape == $valeur_probleme) 
+					{
+						$erreurs_etape[] = "Ce nom de recette est déjà utilisé.";
+					} 
+					else 
+					{
+						$erreurs_etape[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+						var_dump($valeur_probleme);
+					}
+				} 
+				else 
+				{
+					$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+				}
+				// On réaffiche le formulaire de création de recettes
+				include CHEMIN_VUE.'etape.php';
+			}
+		} 
+		else 
+		{
+			// On affiche à nouveau le formulaire de création de recettes
+			include CHEMIN_VUE.'etape.php';
+		}
+	} 
+	else 
+	{
+		// On affiche à nouveau le formulaire de création de recettes
+		include CHEMIN_VUE.'etape.php';
+	}
 }
 
 /*	//ingredient
