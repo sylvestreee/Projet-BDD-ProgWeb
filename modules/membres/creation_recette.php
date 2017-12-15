@@ -123,11 +123,9 @@ else
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
 	}
-}
+	//etape
 
-//etape
-
-	/*$crea_etape = new Form('creation_etape');
+	$crea_etape = new Form('creation_etape');
 
 	$crea_etape   ->method('POST');
 
@@ -150,8 +148,11 @@ else
 
 	$crea_etape   ->add('Submit', 'etape')
 				  ->value("Sauvegarder l'étape");
+				  
+	include CHEMIN_VUE.'etape.php';
+}
 
-	//ingredient
+/*	//ingredient
 
 	$crea_ingredient = new Form('creation_ingredient');
 
