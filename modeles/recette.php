@@ -35,7 +35,7 @@ function recherche_recette_par_nom($phrase)
 	$requete = $pdo->prepare("SELECT id_recette,nom_recette 
 		FROM RECETTE
 		WHERE 
-		id_recette = 2");
+		id_recette = '4'");
 
 	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
