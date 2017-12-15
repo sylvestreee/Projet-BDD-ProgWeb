@@ -26,7 +26,7 @@ function lire_infos_utilisateur($id_utilisateur) {
 	$pdo = PDO2::getInstance();
 
 	$requete = $pdo->prepare("SELECT login, mdp, email
-		FROM utilisateur
+		FROM UTILISATEUR
 		WHERE
 		id_utilisateur = :id_utilisateur");
 
