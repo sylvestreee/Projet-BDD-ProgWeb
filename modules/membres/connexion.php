@@ -52,8 +52,8 @@ session_start();
 				// On enregistre les informations dans la session
 				$_SESSION['id']     = $id_utilisateur;
 				$_SESSION['pseudo'] = $nom_utilisateur;
-				$_SESSION['email']  = $infos_utilisateur['adresse_email'];
-				
+				$_SESSION['email']  = $infos_utilisateur['email'];
+
 				
 				// Affichage de la confirmation de la connexion
 				include CHEMIN_VUE.'connexion_effectuee.php';
