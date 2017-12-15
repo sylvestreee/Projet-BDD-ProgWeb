@@ -45,7 +45,7 @@ function recherche_recette_par_nom($demande)
 	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
 	
-	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) {
 	
 		$requete->closeCursor();
 		return $result;
