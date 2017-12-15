@@ -29,5 +29,6 @@ include CHEMIN_LIB.'form.php';
 			while($row=mysql_fetch_array($id_recette))
 			{
 				echo $row;
-			}			
+			}
+			include CHEMIN_VUE.'afficher_resultat_recherche_recette.php';			
 		}
