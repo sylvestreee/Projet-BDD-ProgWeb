@@ -40,7 +40,7 @@ function recherche_recette_par_nom($demande)
 	$requete = $pdo->prepare("SELECT id_recette,nom_recette 
 		FROM RECETTE
 		WHERE 
-		nom_recette like :phrase%");
+		nom_recette like :phrase");
 
 	$requete->bindValue(':phrase', $phrase);
 	var_dump($phrase);
