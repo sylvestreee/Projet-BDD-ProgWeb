@@ -27,19 +27,22 @@ if ($form_recherche_nom->is_valid($_POST)) {
 	echo "bla";
 	list($phrase) = $form_recherche_nom->get_cleaned_data('phrase');
 	
+	echo $phrase;
+	
 	include CHEMIN_MODELE.'recette.php';
 	
 	//$id_recette = recherche_recette_par_nom($phrase);
 	
 
-	include CHEMIN_VUE.'resultat.php';		
-	
 	$id_recette = mysql_query("SELECT id_recette,nom_recette FROM RECETTE WHERE nom_recette like '%carbo%'");
 	
 	while($row=mysql_fetch_array($id_recette,MYSQL_ASSOC))
 	{
-		echo $row["id_recette"];
+		printf("%s",$row["id_recette"]);
 	}
+	
+	include CHEMIN_VUE.'resultat.php';		
+	
 }
 else
 {
