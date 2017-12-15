@@ -54,7 +54,7 @@ else
 	{
 
 		// On vérifie si nb_personnes est bien un nombre (is_numeric)
-		if (is_numeric($crea_recette->get_cleaned_data('nb_personnes')))
+		if (is_numeric($crea_recette->'nb_personnes'))
 		{
 			$erreurs_recette[] = "Vous n'avez pas entré un nombre de personnes valide";
 			echo "yes";
