@@ -25,7 +25,7 @@ $erreurs_recherche = array();
 if ($form_recherche_nom->is_valid($_POST)) {
 	
 	echo "bla";
-	list($phrase) = $form_recherche_nom->get_cleaned_data('phrase');
+	list($phrase) = $form_recherche_nom->get_cleaned_data("phrase");
 	
 	echo $phrase;
 	
