@@ -15,7 +15,7 @@ $form_recherche_nom->add('Text', 'phrase')
 			   ->label("Rechercher une recette");
 
 $form_recherche_nom->add('Submit', 'submit')
-				 ->value("Recherche d'une recette");
+				 ->value("Faire la recherche");
 	
 
 // Création d'un tableau des erreurs
@@ -25,7 +25,7 @@ $erreurs_recherche = array();
 if ($form_recherche_nom->is_valid($_POST)) {
 	
 	echo "bla ";
-	list($phrase) = $form_recherche_nom->get_cleaned_data('phrase');
+	$phrase = $form_recherche_nom->get_cleaned_data('phrase');
 	
 	echo $phrase;
 	
