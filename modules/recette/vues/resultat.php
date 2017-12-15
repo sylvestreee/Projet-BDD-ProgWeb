@@ -3,5 +3,5 @@
 <?php
 foreach($id_recette["nom_recette"] as $r)
 {
-	echo $r["nom_recette"];
+	echo $r;
 }
