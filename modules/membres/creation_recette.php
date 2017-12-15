@@ -57,11 +57,13 @@ else
 		if (is_numeric($crea_recette->get_cleaned_data('nb_personnes')))
 		{
 			$erreurs_inscription[] = "Vous n'avez pas entré un nombre de personnes valide";
+			echo "yes";
 		}
 
 		// Si d'autres erreurs ne sont pas survenues
 		if (empty($erreurs_inscription)) 
 		{
+			echo "yes2";
 			// Tentative d'ajout du membre dans la base de données
 			list($nom_recette, $descriptif/*, $difficulte*/, $prix, $nb_personnes) =
 			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', /*'difficulte',*/ 'prix', 'nb_personnes');
