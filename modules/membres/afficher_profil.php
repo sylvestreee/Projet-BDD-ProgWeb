@@ -16,7 +16,7 @@ if (empty($_SESSION['id'])) {
         
     // Si le profil existe
     if (false !== $infos_utilisateur) {
-        list($nom_utilisateur, $email, ) = $infos_utilisateur;
+        list($login, $email, ) = $infos_utilisateur;
         include CHEMIN_VUE.'profil_infos_utilisateur.php';
 
     } else {
