@@ -41,3 +41,13 @@ function lire_infos_utilisateur($id_utilisateur) {
 	return false;
 }
 
+function get_id()
+{
+	
+}
+
+function get_login()
+{
+	
+}
+

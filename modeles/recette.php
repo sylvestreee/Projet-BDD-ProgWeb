@@ -27,13 +27,3 @@ function ajouter_recette_dans_bdd($nom_recette, $descriptif, $id_utilisateur, $a
 	}
 	return $requete->errorInfo();
 }
-
-function get_id()
-{
-
-}
-
-function get_login()
-{
-
-}
