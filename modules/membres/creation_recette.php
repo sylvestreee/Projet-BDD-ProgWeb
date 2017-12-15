@@ -24,12 +24,18 @@ else
 	$crea_recette   ->add('Textarea', 'descriptif')
 					->label("Descriptif");
 
-	$crea_recette   ->add('Select', 'difficulte')
+	$crea_recette   ->add('Select', 'pays')
 					->choices(array(
-					'f' => 'Facile',
-					'm' => 'Moyen',
-					'd' => 'Difficile'))
-					->label("Difficulté");
+					'Europe' => array(
+					'fr' => 'France',
+					'de' => 'Allemagne'
+					),
+					'Asie' => array(
+					'cn' => 'Chine',
+					'jp' => 'Japon'
+					)
+				))
+				->label("Difficulte");
 
 	$crea_recette   ->add('Select', 'prix')
 					->choices(array(
