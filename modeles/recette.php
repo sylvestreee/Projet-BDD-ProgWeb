@@ -43,7 +43,7 @@ function recherche_recette_par_nom($demande)
 		nom_recette like :phrase%");
 
 	$requete->bindValue(':phrase', $phrase);
-	
+	var_dump($phrase);
 	var_dump($requete);
 	
 	$requete->execute();
