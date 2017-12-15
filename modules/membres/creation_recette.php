@@ -78,7 +78,7 @@ else
 			echo "yes22";
 
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $difficulte, $_SESSION['id'], 
+			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
 			$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
 
 			echo "yes23";
@@ -112,7 +112,6 @@ else
 						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 						var_dump($valeur_probleme);
 						echo "yes26";
-					}
 				} 
 				else 
 				{
