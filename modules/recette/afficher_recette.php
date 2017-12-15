@@ -14,7 +14,7 @@ $form_recherche_nom->method('POST');
 $form_recherche_nom->add('Text', 'phrase')
 			   ->label("Rechercher une recette");
 
-$form_inscription->add('Submit', 'submit')
+$form_recherche_nom->add('Submit', 'submit')
 				 ->value("Recherche d'une recette");
 	
 
