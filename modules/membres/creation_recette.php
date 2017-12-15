@@ -72,8 +72,6 @@ else
 			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 			include CHEMIN_MODELE.'recette.php';
 
-			$difficulte = 'Facile';
-
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
 			$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
