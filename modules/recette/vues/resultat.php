@@ -5,5 +5,4 @@
 foreach($id_recette as $r)
 {
 	echo $r["nom_recette"];
-	var_dump($r);
 }
