@@ -4,5 +4,5 @@
 
 foreach($id_recette as $r)
 {
-	echo $r["nom_recette"];
+	echo $r["nom_recette"]."<br>"; 
 }
