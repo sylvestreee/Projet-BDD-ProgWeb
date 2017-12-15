@@ -29,7 +29,8 @@ if ($form_recherche_nom->is_valid($_POST)) {
 	while($row=mysql_fetch_array($id_recette))
 	{
 		echo $row;
-	}	
+	}
+	include CHEMIN_VUE.'resultat.php';	
 }
 else
 {
