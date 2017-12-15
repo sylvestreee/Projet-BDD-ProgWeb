@@ -27,3 +27,24 @@ function ajouter_recette_dans_bdd($nom_recette, $descriptif, $id_utilisateur, $a
 	}
 	return $requete->errorInfo();
 }
+
+function recherche_recette_par_nom($phrase)
+{
+	$pdo = PDO2::getInstance();
+	
+	$requete = $pdo->prepare("SELECT id_recette 
+		FROM RECETTE
+		WHERE 
+		nom_recette LIKE %:phrase%");
+
+	$requete->bindValue(':phrase', $phrase);
+	$requete->execute();
+	
+	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) {
+	
+		$requete->closeCursor();
+		return $result;
+	}
+	return false;
+	
+}
