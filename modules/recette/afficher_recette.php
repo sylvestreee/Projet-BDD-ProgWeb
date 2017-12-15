@@ -20,6 +20,7 @@ $erreurs_recherche = array();
 // Validation des champs suivant les règles
 if ($form_recherche_nom->is_valid($_POST)) {
 	
+	echo "bla";
 	list($phrase) = $form_recherche_nom('phrase');
 	
 	include CHEMIN_MODELE.'recette.php';
