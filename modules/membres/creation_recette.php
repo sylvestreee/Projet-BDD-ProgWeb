@@ -112,6 +112,7 @@ else
 						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 						var_dump($valeur_probleme);
 						echo "yes26";
+					}
 				} 
 				else 
 				{
