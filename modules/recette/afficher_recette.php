@@ -28,10 +28,7 @@ if ($form_recherche_nom->is_valid($_POST)) {
 	
 	include CHEMIN_MODELE.'recette.php';
 	
-	//$id_recette = recherche_recette_par_nom($phrase);
-	
-
-	$id_recette = mysql_query("SELECT nom_recette FROM RECETTE WHERE id_recette = '4'");
+	$id_recette = recherche_recette_par_nom($phrase);
 	
 	echo $id_recette;
 	
