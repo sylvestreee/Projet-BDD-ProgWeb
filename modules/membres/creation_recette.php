@@ -42,7 +42,7 @@ else
 	$erreurs_inscription = array();
 
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
-	if ($form_inscription->is_valid($_POST)) 
+	if ($crea_recette->is_valid($_POST)) 
 	{
 
 		// On vérifie si nb_personnes est bien un nombre (is_numeric)
