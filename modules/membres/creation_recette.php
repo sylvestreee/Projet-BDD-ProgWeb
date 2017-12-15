@@ -63,15 +63,15 @@ else
 		// Si d'autres erreurs ne sont pas survenues
 		if (empty($erreurs_recette)) 
 		{
+			$difficulte = 'Facile';
+			
 			echo "yes2";
 			// Tentative d'ajout du membre dans la base de données
-			list($nom_recette, $descriptif/*, $difficulte*/, $prix, $nb_personnes) =
-			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', /*'difficulte',*/ 'prix', 'nb_personnes');
+			list($nom_recette, $descriptif, $prix, $nb_personnes) =
+			$form_inscription->get_cleaned_data('nom_recette', 'descriptif', 'prix', 'nb_personnes');
 
 			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 			include CHEMIN_MODELE.'recette.php';
-
-			$difficulte = 'Facile';
 
 			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $difficulte, $_SESSION['id'], 
