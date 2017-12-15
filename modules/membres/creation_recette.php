@@ -24,7 +24,7 @@ else
 	$crea_recette   ->add('Textarea', 'descriptif')
 					->label("Descriptif");
 
-	$crea_recette   ->add('Select', 'pays')
+	$crea_recette   ->add('Select', 'difficulte')
 					->choices(array(
 					'Europe' => array(
 					'fr' => 'France',
