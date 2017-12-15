@@ -15,10 +15,10 @@ $form_recherche_nom->add('Text', 'phrase')
 			   ->label("Rechercher une recette");
 
 // Création d'un tableau des erreurs
-$erreurs_connexion = array();
+$erreurs_recherche = array();
 
 // Validation des champs suivant les règles
-if ($form_connexion->is_valid($_POST)) {
+if ($form_recherche_nom->is_valid($_POST)) {
 	
 	list($phrase) = $form_recherche_nom('phrase');
 	
