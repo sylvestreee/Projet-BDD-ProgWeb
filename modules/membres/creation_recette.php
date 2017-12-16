@@ -26,9 +26,9 @@ else
 
 	$crea_recette   ->add('Select', 'difficulte')
 					->choices(array(
-					'f' => 'Facile', 
-					'm' => 'Moyen', 
-					'd' => 'Difficile'))
+					'1' => 'Facile', 
+					'2' => 'Moyen', 
+					'3' => 'Difficile'))
 					->label("Difficulté");
 
 	$crea_recette   ->add('Select', 'prix')
