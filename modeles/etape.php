@@ -31,9 +31,9 @@ function recherche_id_recette_par_nom($nom_recette)
 	echo $nom_recette;
 	$pdo = PDO2::getInstance();
 
-	$phrase = "%";
+	$phrase = "'";
 	$phrase .= $nom_recette;
-	$phrase .= "%";
+	$phrase .= "'";
 
 	echo $phrase;
 	
@@ -45,10 +45,9 @@ function recherche_id_recette_par_nom($nom_recette)
 	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
 	
-	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
+	if ($result = $requete->fetch()) 
 	{
-		$requete->closeCursor();
-		echo $result[id_recette];
+		echo $result;
 		return $result;
 	}
 	return false;
