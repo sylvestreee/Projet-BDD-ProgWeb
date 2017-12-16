@@ -34,9 +34,9 @@ function recherche_id_recette_par_nom($nom_recette)
 	$requete = $pdo->prepare("SELECT id_recette
 		FROM RECETTE
 		WHERE 
-		nom_recette like :nom_recette");
+		nom_recette = 'Carbonara'");
 
-	$requete->bindValue(':nom_recette', $nom_recette, PDO::PARAM_STR);
+	//$requete->bindValue(':nom_recette', $nom_recette);
 	$requete->execute();
 	
 	if ($result = $requete->fetch()) 
