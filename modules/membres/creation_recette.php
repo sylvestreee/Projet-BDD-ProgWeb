@@ -112,7 +112,12 @@ else
 
 	$crea_etape   ->method('POST');
 
-	//sélectionner une recette de l'utilisateur
+	include CHEMIN_MODELE.'etape.php';
+	$recettes = recherche_recette_par_id($id_utilisateur);
+
+	$crea_etape   ->add('Select', 'recettes')
+				  ->choices($recettes)
+				  ->label("Recettes");
 
 	//sélectionne un ingrédient
 
@@ -163,13 +168,12 @@ else
 			echo $r["nom_recette"]."<br>"; 
 		}	
 
-		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
-		// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
+		// Si la base de données a bien voulu ajouter l'étape (pas de doublons)
 		if (ctype_digit($id_etape)) 
 		{
-			// Affichage de la confirmation de l'inscription
+			// Affichage de la confirmation de l'étape
 			include CHEMIN_VUE.'etape_effectuee.php';
 		} 
 		// Gestion des doublons
@@ -185,6 +189,8 @@ else
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
 				$valeur_probleme = $valeur_probleme[1];
+
+				//???
 				if ($nom_etape == $valeur_probleme) 
 				{
 					$erreurs_etape[] = "Ce nom de recette est déjà utilisé.";
