@@ -48,7 +48,7 @@ function recherche_id_recette_par_nom($nom_recette)
 	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
 	{
 		$requete->closeCursor();
-		echo $result;
+		echo $result[id_recette];
 		return $result;
 	}
 	return false;
