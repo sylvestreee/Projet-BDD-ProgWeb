@@ -83,10 +83,19 @@ function recherche_recette_par_id($id_utilisateur)
 	return false;
 }
 
-/*<?php
-$prenoms = array();
-// connexion SQL
-$req = mysql_query("SELECT champ_prenom FROM ta_table");
-while($dat = mysql_fetch_assoc($req)){
- $prenoms[] = $dat['champ_prenom'];
-}*/
+function recherche_ingredient()
+{
+	$pdo = PDO2::getInstance();
+	
+	$requete = $pdo->prepare("SELECT nom_ingr
+		FROM INGREDIENT");
+	
+	$requete->execute();
+	
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
+	{
+		$requete->closeCursor();
+		return $result;
+	}
+	return false;
+}

@@ -112,15 +112,17 @@ else
 
 	$crea_etape   ->method('POST');
 
-	//sélectionner une recette de l'utilisateur
 	$recettes = recherche_recette_par_id($_SESSION['id']);
-	
 
-	//sélectionne un ingrédient
+	$ingredients = recherche_ingredient();
 
 	$crea_etape   ->add('Select', 'recettes')
 				  ->choices($recettes)
 				  ->label("Recettes");
+
+	$crea_etape   ->add('Select', 'ingredients')
+				  ->choices($ingredients)
+				  ->label("Ingredients");			  
 
 	$crea_etape   ->add('Text', 'quantite_etape')
 				  ->label("Quantité d'ingrédients");
