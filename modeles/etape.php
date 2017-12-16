@@ -31,35 +31,13 @@ function recherche_id_recette_par_nom($nom_recette)
 	echo $nom_recette;
 	$pdo = PDO2::getInstance();
 
-	$phrase = "";
+	$phrase = "%";
 	$phrase .= $nom_recette;
-	$phrase .= "";
+	$phrase .= "%";
+
+	echo $phrase;
 	
 	$requete = $pdo->prepare("SELECT id_recette
-		FROM RECETTE
-		WHERE 
-		nom_recette = :phrase");
-
-	$requete->bindValue(':phrase', $phrase);
-	$requete->execute();
-	
-	if ($result = $requete->fetch()) 
-	{
-		echo $result;
-		return $result;
-	}
-	return false;
-}
-
-function recherche_recette_par_nom($demande)
-{
-	$pdo = PDO2::getInstance();
-	
-	$phrase = "%";
-	$phrase .= $demande;
-	$phrase .= "%";
-	
-	$requete = $pdo->prepare("SELECT id_recette,nom_recette 
 		FROM RECETTE
 		WHERE 
 		nom_recette like :phrase");
@@ -67,9 +45,10 @@ function recherche_recette_par_nom($demande)
 	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
 	
-	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) {
-	
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
+	{
 		$requete->closeCursor();
+		echo $result;
 		return $result;
 	}
 	return false;
