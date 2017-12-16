@@ -116,7 +116,7 @@ else
 					   ->label("Nom de l'ingredient");
 
 	$crea_ingredient   ->add('Select', 'type_ingr')
-					   ->choices(array('u', 'g', 'L'))
+					   ->choices(array('1', '2', '3'))
 					   ->label("Type");
 
 	//informations nutritionnelles
