@@ -166,7 +166,6 @@ else
 			}
 		}
 		// Gestion des doublons
-		} 
 		else 
 		{
 			// Changement de nom de variable (plus lisible)
