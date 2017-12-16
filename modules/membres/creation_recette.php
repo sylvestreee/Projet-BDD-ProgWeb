@@ -25,21 +25,11 @@ else
 					->label("Descriptif");
 
 	$crea_recette   ->add('Select', 'difficulte')
-					->choices(array(
-					'1' => '1',
-					'2' => '2',
-					'3' => '3',
-					'4' => '4',
-					'5' => '5'))
+					->choices(array('Tres facile', 'Facile', 'Moyen', 'Difficile'))
 					->label("Difficulté");
 
 	$crea_recette   ->add('Select', 'prix')
-					->choices(array(
-					'1' => '1',
-					'2' => '2',
-					'3' => '3',
-					'4' => '4',
-					'5' => '5'))
+					->choices(array('1', '2', '3', '4', '5'))
 					->label("Prix");
 
 	$crea_recette   ->add('Text', 'nb_personnes')
@@ -123,7 +113,46 @@ else
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
 	}
-	//etape
+	//ingredient
+
+	$crea_ingredient = new Form('creation_ingredient');
+
+	$crea_ingredient   ->method('POST');
+
+	$crea_ingredient   ->add('Text', 'nom_ingr')
+					   ->label("Nom de l'ingredient");
+
+	$crea_ingredient   ->add('Select', 'type_ingr')
+					   ->choices(array('u', 'g', 'mL'))
+					   ->label("Type");
+
+	//informations nutritionnelles
+
+	$crea_ingredient   ->add('Text', 'calories')
+					   ->label("Calories");
+
+	$crea_ingredient   ->add('Text', 'lipides')
+					   ->label("Lipides");
+
+	$crea_ingredient   ->add('Text', 'glucides')
+					   ->label("Glucides");
+
+	$crea_ingredient   ->add('Text', 'protides')
+					   ->label("Protides");
+
+	//regime
+
+	$crea_ingredient   ->add('Text', 'nom_regime')
+					   ->label("Régime");
+
+	$crea_ingredient   ->add('Submit', 'ingredient')
+					   ->value("Sauvegarder l'ingrédient");
+
+	include CHEMIN_VUE.'ingredient.php';
+}
+
+/*
+//etape
 
 	$crea_etape = new Form('creation_etape');
 
@@ -217,43 +246,4 @@ else
 	{
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'etape.php';
-	}
-}
-
-/*	//ingredient
-
-	$crea_ingredient = new Form('creation_ingredient');
-
-	$crea_ingredient   ->method('POST');
-
-	$crea_ingredient   ->add('Text', 'nom_ingredient')
-					   ->label("Nom de l'ingredient");
-
-	$crea_ingredient   ->add('Select', 'type_ingredient')
-					   ->choices(array('u', 'g', 'mL'))
-					   ->label("Type");
-
-	//informations nutritionnelles
-
-	$crea_ingredient   ->add('Text', 'calories')
-					   ->label("Calories");
-
-	$crea_ingredient   ->add('Text', 'lipides')
-					   ->label("Lipides");
-
-	$crea_ingredient   ->add('Text', 'glucides')
-					   ->label("Glucides");
-
-	$crea_ingredient   ->add('Text', 'protides')
-					   ->label("Protides");
-
-	//regime
-
-	$crea_ingredient   ->add('Text', 'nom_regime')
-					   ->label("Régime");
-
-	$crea_ingredient   ->add('Submit', 'ingredient')
-					   ->value("Sauvegarder l'ingrédient");
-
-	include CHEMIN_VUE.'etape.php';
-	include CHEMIN_VUE.'ingredient.php';*/
+	}*/
