@@ -150,7 +150,7 @@ else
 		// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 		include CHEMIN_MODELE.'etape.php';
 
-		echo "yes";
+		//echo "yes";
 		$nom_recette = "Carbonara";
 		$nom_ingr = "Carotte";
 
@@ -158,7 +158,7 @@ else
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		echo $id_recette."\n";
-		echo $îd_ingr."\n";
+		echo $id_ingr."\n";
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
@@ -173,7 +173,7 @@ else
 		// Gestion des doublons
 		else 
 		{
-			echo "yes2";
+			//echo "yes2";
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_etape;
 
@@ -198,10 +198,10 @@ else
 			} 
 			else 
 			{
-				echo "yes6";
+				//echo "yes6";
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			echo "yes7";
+			//echo "yes7";
 			// On réaffiche le formulaire de création de recettes
 			include CHEMIN_VUE.'etape.php';
 		}
