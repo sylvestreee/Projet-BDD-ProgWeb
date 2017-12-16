@@ -157,8 +157,8 @@ else
 		$id_recette = recherche_id_recette_par_nom($nom_recette);
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
-		echo $id_recette;</br>
-		echo $îd_ingr;</br>
+		echo $id_recette."\n";
+		echo $îd_ingr."\n";
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
