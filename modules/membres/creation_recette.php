@@ -154,12 +154,11 @@ else
 		$test = "Macaron";
 		$test1 = recherche_id_recette_par_nom($test);
 
-		echo $test1;
-
-		//$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
+		$test2 = "Carotte";
+		$test3 = recherche_id_ingr_par_nom($test2);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-		//$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
+		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
 		// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 		if (ctype_digit($id_etape)) 
@@ -171,7 +170,7 @@ else
 		// Gestion des doublons
 		else 
 		{
-			//echo "yes2";
+			echo "yes2";
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_etape;
 
