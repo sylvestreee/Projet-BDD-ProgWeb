@@ -149,13 +149,12 @@ else
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
 	if ($crea_etape->is_valid($_POST)) 
 	{
+		echo $recettes;
+		
 		// Tentative d'ajout du membre dans la base de données
 		list($recettes, $ingredients, $quantite_etape, $temps, $type_etape, $description) =
 		$crea_etape->get_cleaned_data('recettes', 'ingredients', 'quantite_etape', 'temps', 'type_etape', 'description');
 
-		// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
-
-		echo $recettes;
 		$nom_recette = "Macaron";
 		$id_recette = recherche_id_recette_par_nom($nom_recette);
 
