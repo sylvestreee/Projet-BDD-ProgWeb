@@ -151,12 +151,13 @@ else
 		include CHEMIN_MODELE.'etape.php';
 
 		//echo "yes";
-		$test = 'Carbo';
-		//$nom_ingr = "Carotte";
+		$test = 'Carbonara';
 
 		echo $test;
 
-		//$id_recette = recherche_id_recette_par_nom($nom_recette);
+		$test1 = recherche_id_recette_par_nom($test);
+
+		echo $test1;
 		//$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
