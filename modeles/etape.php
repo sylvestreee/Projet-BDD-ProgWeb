@@ -30,18 +30,46 @@ function recherche_id_recette_par_nom($nom_recette)
 {
 	echo $nom_recette;
 	$pdo = PDO2::getInstance();
+
+	$phrase = "";
+	$phrase .= $nom_recette;
+	$phrase .= "";
 	
 	$requete = $pdo->prepare("SELECT id_recette
 		FROM RECETTE
 		WHERE 
-		nom_recette = 'Carbonara'");
+		nom_recette = :phrase");
 
-	//$requete->bindValue(':nom_recette', $nom_recette);
+	$requete->bindValue(':phrase', $phrase);
 	$requete->execute();
 	
 	if ($result = $requete->fetch()) 
 	{
 		echo $result;
+		return $result;
+	}
+	return false;
+}
+
+function recherche_recette_par_nom($demande)
+{
+	$pdo = PDO2::getInstance();
+	
+	$phrase = "%";
+	$phrase .= $demande;
+	$phrase .= "%";
+	
+	$requete = $pdo->prepare("SELECT id_recette,nom_recette 
+		FROM RECETTE
+		WHERE 
+		nom_recette like :phrase");
+
+	$requete->bindValue(':phrase', $phrase);
+	$requete->execute();
+	
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) {
+	
+		$requete->closeCursor();
 		return $result;
 	}
 	return false;
@@ -54,7 +82,7 @@ function recherche_id_ingr_par_nom($nom_ingr)
 	$requete = $pdo->prepare("SELECT id_ingr
 		FROM INGREDIENT
 		WHERE 
-		nom_ingr like :nom_ingr");
+		nom_ingr = :nom_ingr");
 
 	$requete->bindValue(':nom_ingr', $nom_ingr);
 	$requete->execute();
