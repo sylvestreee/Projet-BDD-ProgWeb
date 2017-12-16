@@ -4,7 +4,7 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 {
 	$pdo = PDO2::getInstance();
 	
-	$requete = $pdo->prepare("INSERT INTO RECETTE SET
+	$requete = $pdo->prepare("INSERT INTO ETAPE SET
 		id_recette		= :id_recette,
 		id_ingr 		= :id_ingr,
 		quantite_etape	= :quantite_etape,
