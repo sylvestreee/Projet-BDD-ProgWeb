@@ -1,5 +1,7 @@
 <h2>Création d'une recette</h2>
 
+<h3>Ajouter une recette</h3>
+
 <h4>Choix de la difficulté :</h4>
 <ul>
   <li>1 = très facile</li>
