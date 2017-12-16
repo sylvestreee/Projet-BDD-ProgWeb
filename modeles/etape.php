@@ -37,7 +37,6 @@ function recherche_id_recette_par_nom($nom_recette)
 
 	$requete->bindValue(':nom_recette', $nom_recette);
 	$requete->execute();
-	
 	if ($result = $requete->fetch()) 
 	{
 		return $result['id_recette'];
@@ -68,8 +67,6 @@ function recherche_recette_par_id($id_utilisateur)
 {
 	$pdo = PDO2::getInstance();
 	
-	$phrase .= $id_utilisateur;
-	
 	$requete = $pdo->prepare("SELECT nom_recette 
 		FROM RECETTE
 		WHERE 
@@ -85,3 +82,11 @@ function recherche_recette_par_id($id_utilisateur)
 	}
 	return false;
 }
+
+/*<?php
+$prenoms = array();
+// connexion SQL
+$req = mysql_query("SELECT champ_prenom FROM ta_table");
+while($dat = mysql_fetch_assoc($req)){
+ $prenoms[] = $dat['champ_prenom'];
+}*/

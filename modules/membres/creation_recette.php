@@ -11,7 +11,7 @@ if (!utilisateur_est_connecte())
 else 
 {
 	include CHEMIN_LIB.'form.php';
-
+	
 //AJOUT RECETTE
 
 	$crea_recette = new Form('creation_recette');
@@ -112,19 +112,15 @@ else
 
 	$crea_etape   ->method('POST');
 
-	include CHEMIN_MODELE.'etape.php';
+	//sélectionner une recette de l'utilisateur
+	$id_utilisateur = 1;
 	$recettes = recherche_recette_par_id($id_utilisateur);
 
-	$crea_etape   ->add('Select', 'recettes')
-				  ->choices(array($recettes))
-				  ->label("Recettes");
-
-				  foreach($recettes as $r)
-		{
-			echo $r["nom_recette"]."<br>"; 
-		}	
-
 	//sélectionne un ingrédient
+
+	$crea_etape   ->add('Select', 'recettes')
+				  ->choices($recettes)
+				  ->label("Recettes");
 
 	$crea_etape   ->add('Text', 'quantite_etape')
 				  ->label("Quantité d'ingrédients");
@@ -165,14 +161,13 @@ else
 		$nom_ingr = "Carotte";
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
-		$id_utilisateur = 1;
-
+		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
 		// Si la base de données a bien voulu ajouter l'étape (pas de doublons)
 		if (ctype_digit($id_etape)) 
 		{
-			// Affichage de la confirmation de l'étape
+			// Affichage de la confirmation de l'inscription
 			include CHEMIN_VUE.'etape_effectuee.php';
 		} 
 		// Gestion des doublons
@@ -188,8 +183,6 @@ else
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
 				$valeur_probleme = $valeur_probleme[1];
-
-				//???
 				if ($nom_etape == $valeur_probleme) 
 				{
 					$erreurs_etape[] = "Ce nom de recette est déjà utilisé.";
@@ -204,13 +197,13 @@ else
 			{
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			// On réaffiche le formulaire de création de recettes
+			// On réaffiche le formulaire de création d'étapes
 			include CHEMIN_VUE.'etape.php';
 		}
 	} 
 	else 
 	{
-		// On affiche à nouveau le formulaire de création de recettes
+		// On affiche à nouveau le formulaire de création d'étapes
 		include CHEMIN_VUE.'etape.php';
 	}
 
