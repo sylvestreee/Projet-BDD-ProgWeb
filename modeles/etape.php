@@ -34,7 +34,7 @@ function recherche_id_recette_par_nom($nom_recette)
 	$requete = "SELECT id_recette
 		FROM RECETTE
 		WHERE 
-		nom_recette = :nom_recette");
+		nom_recette = :nom_recette";
 
 	$requete->bindValue(':nom_recette', $nom_recette);
 	$result = $mysqli->query($requete);
