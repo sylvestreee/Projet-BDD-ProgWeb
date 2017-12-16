@@ -156,11 +156,11 @@ else
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		$id_utilisateur = 1;
-		$recettes = recherche_recette_par_id($id_utilisateur);
 
-		foreach($nom_recette as $n)
+		$recettes = recherche_recette_par_id($id_utilisateur);
+		foreach($recettes as $r)
 		{
-			echo $n["nom_recette"]."<br>"; 
+			echo $r["nom_recette"]."<br>"; 
 		}	
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
