@@ -116,7 +116,7 @@ else
 	$recettes = recherche_recette_par_id($id_utilisateur);
 
 	$crea_etape   ->add('Select', 'recettes')
-				  ->choices($recettes)
+				  ->choices(array($recettes))
 				  ->label("Recettes");
 
 	//sélectionne un ingrédient
