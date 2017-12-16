@@ -151,16 +151,16 @@ else
 		include CHEMIN_MODELE.'etape.php';
 
 		//echo "yes";
-		echo "Carbonara".$nom_recette;
+		$test = 'Carbo';
 		//$nom_ingr = "Carotte";
 
-		echo $nom_recette;
+		echo $test;
 
-		$id_recette = recherche_id_recette_par_nom($nom_recette);
+		//$id_recette = recherche_id_recette_par_nom($nom_recette);
 		//$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
+		//$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
 		// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 		if (ctype_digit($id_etape)) 
@@ -200,7 +200,6 @@ else
 				//echo "yes6";
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			echo $nom_recette;
 			echo "yes7";
 			// On réaffiche le formulaire de création de recettes
 			include CHEMIN_VUE.'etape.php';
