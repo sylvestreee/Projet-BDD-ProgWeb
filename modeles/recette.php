@@ -32,7 +32,6 @@ function recherche_recette_par_nom($demande)
 {
 	$pdo = PDO2::getInstance();
 	
-	
 	$phrase = "%";
 	$phrase .= $demande;
 	$phrase .= "%";
@@ -51,5 +50,4 @@ function recherche_recette_par_nom($demande)
 		return $result;
 	}
 	return false;
-	
 }
