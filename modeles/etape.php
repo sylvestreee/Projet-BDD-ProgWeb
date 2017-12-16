@@ -12,7 +12,7 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 		type_etape 		= :type_etape,
 		description 	= :description");
 
-	$requete->bindValue(':nom_recette', $id_recette);
+	$requete->bindValue(':id_recette', $id_recette);
 	$requete->bindValue(':id_ingr', $id_ingr);
 	$requete->bindValue(':quantite_etape', $quantite_etape);
 	$requete->bindValue(':temps', $temps);
@@ -34,7 +34,7 @@ function recherche_id_recette_par_nom($nom_recette)
 	$requete = $pdo->prepare("SELECT id_recette
 		FROM RECETTE
 		WHERE 
-		nom_recette = :nom_recette");
+		nom_recette like :nom_recette");
 
 	$requete->bindValue(':nom_recette', $nom_recette);
 	$requete->execute();
