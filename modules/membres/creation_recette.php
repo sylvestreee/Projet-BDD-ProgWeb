@@ -152,7 +152,7 @@ else
 
 		//echo "yes";
 		$nom_recette = "Carbonara";
-		$nom_ingr = "Carotte";
+		//$nom_ingr = "Carotte";
 
 		$id_recette = recherche_id_recette_par_nom($nom_recette);
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
