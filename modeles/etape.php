@@ -30,7 +30,7 @@ function recherche_id_recette_par_nom($nom_recette)
 {
 	echo $nom_recette;
 	$pdo = PDO2::getInstance();
-	
+
 	$phrase .= $nom_recette;
 	
 	$requete = $pdo->prepare("SELECT id_recette
@@ -43,8 +43,8 @@ function recherche_id_recette_par_nom($nom_recette)
 	
 	if ($result = $requete->fetch()) 
 	{
-		var_dump($result);
-		return $result;
+		//var_dump($result);
+		return $result['id_recette'];
 	}
 	return false;
 }
