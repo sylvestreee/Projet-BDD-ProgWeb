@@ -972,14 +972,6 @@ class Form_Select extends Form_Input {
 		return $this;
 	}
 
-	protected function _init() {
-
-		if (!isset(self::$error_list['incorrect_value'])) {
-
-			self::$error_list['incorrect_value'] = "La valeur fournie est interdite.";
-		}
-	}
-
 	public function is_valid($value) {
 
 		if (parent::is_valid($value)) {
