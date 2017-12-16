@@ -28,6 +28,7 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 
 function recherche_id_recette_par_nom($nom_recette)
 {
+	echo $nom_recette;
 	$pdo = PDO2::getInstance();
 	
 	$requete = $pdo->prepare("SELECT id_recette
