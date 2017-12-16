@@ -152,12 +152,8 @@ else
 
 		//echo "yes";
 		$test = 'Carbonara';
-
-		echo $test;
-
 		$test1 = recherche_id_recette_par_nom($test);
-
-		echo $test1;
+		
 		//$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php

@@ -39,8 +39,9 @@ function recherche_id_recette_par_nom($nom_recette)
 	$requete->bindValue(':nom_recette', $nom_recette);
 	$requete->execute();
 	
-	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) 
+	if ($result = $requete->fetch()) 
 	{
+		echo $result;
 		return $result;
 	}
 	return false;
@@ -58,7 +59,7 @@ function recherche_id_ingr_par_nom($nom_ingr)
 	$requete->bindValue(':nom_ingr', $nom_ingr);
 	$requete->execute();
 	
-	if ($result = $requete->fetch(PDO::FETCH_ASSOC)) 
+	if ($result = $requete->fetch()) 
 	{
 		return $result;
 	}
