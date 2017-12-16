@@ -63,3 +63,25 @@ function recherche_id_ingr_par_nom($nom_ingr)
 	}
 	return false;
 }
+
+function recherche_recette_par_id($id_utilisateur)
+{
+	$pdo = PDO2::getInstance();
+	
+	$phrase .= $id_utilisateur;
+	
+	$requete = $pdo->prepare("SELECT nom_recette 
+		FROM RECETTE
+		WHERE 
+		id_utilisateur like :id_utilisateur");
+
+	$requete->bindValue(':id_utilisateur', $id_utilisateur);
+	$requete->execute();
+	
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
+	{
+		$requete->closeCursor();
+		return $result;
+	}
+	return false;
+}

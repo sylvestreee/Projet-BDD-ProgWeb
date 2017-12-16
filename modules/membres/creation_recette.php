@@ -155,8 +155,13 @@ else
 		$nom_ingr = "Carotte";
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
-		echo $id_recette;
-		echo $id_ingr;
+		$id_utilisateur = 1;
+		$recettes = recherche_recette_par_id($id_utilisateur);
+
+		foreach($nom_recette as $n)
+		{
+			echo $n["nom_recette"]."<br>"; 
+		}	
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
@@ -164,14 +169,12 @@ else
 		// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
 		if (ctype_digit($id_etape)) 
 		{
-			echo "yes1";
 			// Affichage de la confirmation de l'inscription
 			include CHEMIN_VUE.'etape_effectuee.php';
 		} 
 		// Gestion des doublons
 		else 
 		{
-			echo "yes2";
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_etape;
 
@@ -184,29 +187,24 @@ else
 				$valeur_probleme = $valeur_probleme[1];
 				if ($nom_etape == $valeur_probleme) 
 				{
-					echo "yes4";
 					$erreurs_etape[] = "Ce nom de recette est déjà utilisé.";
 				} 
 				else 
 				{
-					echo "yes5";
 					$erreurs_etape[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 					var_dump($valeur_probleme);
 				}
 			} 
 			else 
 			{
-				//echo "yes6";
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			echo "yes7";
 			// On réaffiche le formulaire de création de recettes
 			include CHEMIN_VUE.'etape.php';
 		}
 	} 
 	else 
 	{
-		echo "yes8";
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'etape.php';
 	}
