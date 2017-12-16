@@ -11,6 +11,9 @@ if (!utilisateur_est_connecte())
 else 
 {
 	include CHEMIN_LIB.'form.php';
+	include CHEMIN_MODELE.'recette.php';
+	include CHEMIN_MODELE.'etape.php';
+	include CHEMIN_MODELE.'ingredient.php';
 	
 //AJOUT RECETTE
 
@@ -56,10 +59,7 @@ else
 		// Tentative d'ajout de la recette dans la base de données
 		list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
 		$crea_recette->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
-
-		// On veut utiliser le modèle de la recette
-		include CHEMIN_MODELE.'recette.php';
-
+		
 		// ajouter_recette_dans_bdd() est défini dans ~/modeles/recette.php
 		$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
 		$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
@@ -111,11 +111,10 @@ else
 	$crea_etape = new Form('creation_etape');
 
 	$crea_etape   ->method('POST');
-	include CHEMIN_MODELE.'etape.php';
 
 	//sélectionner une recette de l'utilisateur
-	$id_utilisateur = 1;
-	$recettes = recherche_recette_par_id($id_utilisateur);
+	$recettes = recherche_recette_par_id($_SESSION['id']);
+	
 
 	//sélectionne un ingrédient
 
@@ -250,9 +249,6 @@ else
 		// Tentative d'ajout de l'ingrédient dans la base de données
 		list($nom_ingr, $type_ingr, $calories, $lipides, $glucides, $protides, $nom_regime) =
 		$crea_ingredient->get_cleaned_data('nom_ingr', 'type_ingr', 'calories', 'lipides', 'glucides', 'protides', 'nom_regime');
-
-		// On veut utiliser le modèle de la recette
-		include CHEMIN_MODELE.'ingredient.php';
 
 		// ajouter_ingredient_dans_bdd() est défini dans ~/modeles/ingredient.php
 		$id_ingr = ajouter_ingredient_dans_bdd($nom_ingr, $type_ingr);
