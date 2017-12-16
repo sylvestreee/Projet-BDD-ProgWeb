@@ -119,6 +119,11 @@ else
 				  ->choices(array($recettes))
 				  ->label("Recettes");
 
+				  foreach($recettes as $r)
+		{
+			echo $r["nom_recette"]."<br>"; 
+		}	
+
 	//sélectionne un ingrédient
 
 	$crea_etape   ->add('Text', 'quantite_etape')
@@ -161,12 +166,6 @@ else
 		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
 
 		$id_utilisateur = 1;
-
-		$recettes = recherche_recette_par_id($id_utilisateur);
-		foreach($recettes as $r)
-		{
-			echo $r["nom_recette"]."<br>"; 
-		}	
 
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
