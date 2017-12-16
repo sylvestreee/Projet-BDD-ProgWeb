@@ -150,12 +150,12 @@ else
 	if ($crea_etape->is_valid($_POST)) 
 	{
 		// Tentative d'ajout du membre dans la base de données
-		list($quantite_etape, $temps, $type_etape, $description) =
-		$crea_etape->get_cleaned_data('quantite_etape', 'temps', 'type_etape', 'description');
+		list($recettes, $ingredients, $quantite_etape, $temps, $type_etape, $description) =
+		$crea_etape->get_cleaned_data('recettes', 'ingredients', 'quantite_etape', 'temps', 'type_etape', 'description');
 
 		// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
 
-		//echo "yes";
+		echo $recettes;
 		$nom_recette = "Macaron";
 		$id_recette = recherche_id_recette_par_nom($nom_recette);
 
