@@ -29,21 +29,19 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 function recherche_id_recette_par_nom($nom_recette)
 {
 	echo $nom_recette;
-	$pdo = PDO2::getInstance();
+	//$pdo = PDO2::getInstance();
 	
-	$requete = $pdo->prepare("SELECT id_recette
+	$requete = "SELECT id_recette
 		FROM RECETTE
 		WHERE 
-		nom_recette like :nom_recette");
+		nom_recette = :nom_recette");
 
 	$requete->bindValue(':nom_recette', $nom_recette);
-	$requete->execute();
+	$result = $mysqli->query($requete);
 	
-	if ($result = $requete->fetch()) 
-	{
-		echo $result;
-		return $result;
-	}
+	echo $result;
+	//return $result;
+	
 	return false;
 }
 
