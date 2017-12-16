@@ -111,6 +111,7 @@ else
 	$crea_etape = new Form('creation_etape');
 
 	$crea_etape   ->method('POST');
+	include CHEMIN_MODELE.'etape.php';
 
 	//sélectionner une recette de l'utilisateur
 	$id_utilisateur = 1;
@@ -152,7 +153,6 @@ else
 		$crea_etape->get_cleaned_data('quantite_etape', 'temps', 'type_etape', 'description');
 
 		// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
-		include CHEMIN_MODELE.'etape.php';
 
 		//echo "yes";
 		$nom_recette = "Macaron";
