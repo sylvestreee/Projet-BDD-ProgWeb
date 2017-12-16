@@ -47,7 +47,7 @@ function recherche_id_recette_par_nom($nom_recette)
 	
 	if ($result = $requete->fetch()) 
 	{
-		echo $result;
+		var_dump($result);
 		return $result;
 	}
 	return false;
