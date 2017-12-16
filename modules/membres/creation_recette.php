@@ -126,9 +126,7 @@ else
 				  ->choices(array(
 				  '1' => '1',
 				  '2' => '2',
-				  '3' => '3',
-			 	  '4' => '4',
-				  '5' => '5'))
+				  '3' => '3'))
 				  ->label("Type");
 
 	$crea_etape   ->add('Textarea', 'description')
@@ -151,11 +149,11 @@ else
 		include CHEMIN_MODELE.'etape.php';
 
 		//echo "yes";
-		$test = "Macaron";
-		$test1 = recherche_id_recette_par_nom($test);
+		$nom_recette = "Macaron";
+		$id_recette = recherche_id_recette_par_nom($nom_recette);
 
-		$test2 = "Carotte";
-		$test3 = recherche_id_ingr_par_nom($test2);
+		$nom_ingr = "Carotte";
+		$id_ingr = recherche_id_ingr_par_nom($id_ingr);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
 		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
