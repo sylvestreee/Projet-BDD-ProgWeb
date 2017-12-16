@@ -12,7 +12,7 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 		type_etape 		= :type_etape,
 		description 	= :description");
 
-	$requete->bindValue(':nom_recette', $nom_recette);
+	$requete->bindValue(':id_recette', $id_recette);
 	$requete->bindValue(':id_ingr', $id_ingr);
 	$requete->bindValue(':quantite_etape', $quantite_etape);
 	$requete->bindValue(':temps', $temps);
