@@ -42,7 +42,7 @@ function ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $
 	return $requete->errorInfo();
 }
 
-function ajouter_info_nutri_dans_bdd($id_ingr, $nom_regime)
+function ajouter_regime_dans_bdd($id_ingr, $nom_regime)
 {
 	$pdo = PDO2::getIstance();
 		

@@ -53,67 +53,50 @@ else
 	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
 	if ($crea_recette->is_valid($_POST)) 
 	{
-		/*ne fonctionne pas
-			// On vérifie si nb_personnes est bien un nombre
-			if (ctype_digit($crea_recette->get_cleaned_data('nb_personnes')))
-			{
-				$erreurs_recette[] = "Vous n'avez pas entré un nombre de personnes valide";
-			}
-		*/
+		// Tentative d'ajout de la recette dans la base de données
+		list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
+		$crea_recette->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
 
-		// Si d'autres erreurs ne sont pas survenues
-		if (empty($erreurs_recette)) 
+		// On veut utiliser le modèle de la recette
+		include CHEMIN_MODELE.'recette.php';
+
+		// ajouter_recette_dans_bdd() est défini dans ~/modeles/recette.php
+		$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
+		$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
+
+		// Si la base de données a bien voulu ajouter la recette (pas de doublons)
+		if (ctype_digit($id_recette)) 
 		{
-			// Tentative d'ajout du membre dans la base de données
-			list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
-			$crea_recette->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
-
-			// On veut utiliser le modèle de l'inscription (~/modeles/inscription.php)
-			include CHEMIN_MODELE.'recette.php';
-
-			// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-			$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
-			$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
-
-			// Si la base de données a bien voulu ajouter l'utilisateur (pas de doublons)
-			if (ctype_digit($id_recette)) 
-			{
-				// Affichage de la confirmation de l'inscription
-				include CHEMIN_VUE.'recette_effectuee.php';
-			// Gestion des doublons
-			} 
-			else 
-			{
-				// Changement de nom de variable (plus lisible)
-				$erreur =& $id_recette;
-
-				// On vérifie que l'erreur concerne bien un doublon
-				if (23000 == $erreur[0]) 
-				{	
-					// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
-					preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
-					$valeur_probleme = $valeur_probleme[1];
-					if ($nom_recette == $valeur_probleme) 
-					{
-						$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
-					} 
-					else 
-					{
-						$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
-						var_dump($valeur_probleme);
-					}
-				} 
-				else 
-				{
-					$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
-				}
-				// On réaffiche le formulaire de création de recettes
-				include CHEMIN_VUE.'recette.php';
-			}
+			// Affichage de la confirmation de l'inscription
+			include CHEMIN_VUE.'recette_effectuee.php';
+		// Gestion des doublons
 		} 
 		else 
 		{
-			// On affiche à nouveau le formulaire de création de recettes
+			// Changement de nom de variable (plus lisible)
+			$erreur =& $id_recette;
+
+			// On vérifie que l'erreur concerne bien un doublon
+			if (23000 == $erreur[0]) 
+			{	
+				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
+				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+				$valeur_probleme = $valeur_probleme[1];
+				if ($nom_recette == $valeur_probleme) 
+				{
+					$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
+				} 
+				else 
+				{
+					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+					var_dump($valeur_probleme);
+				}
+			} 
+			else 
+			{
+				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+			}
+			// On réaffiche le formulaire de création de recettes
 			include CHEMIN_VUE.'recette.php';
 		}
 	} 
@@ -122,6 +105,7 @@ else
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'recette.php';
 	}
+
 	//ingredient
 
 	$crea_ingredient = new Form('creation_ingredient');
@@ -157,7 +141,66 @@ else
 	$crea_ingredient   ->add('Submit', 'ingredient')
 					   ->value("Sauvegarder l'ingrédient");
 
-	include CHEMIN_VUE.'ingredient.php';
+	if ($crea_ingredient->is_valid($_POST)) 
+	{
+		// Tentative d'ajout de l'ingrédient dans la base de données
+		list($nom_ingr, $type_ingr, $calories, $lipides, $glucides, $protides, $nom_regime) =
+		$crea_ingredient->get_cleaned_data('nom_ingr', 'type_ingr', 'calories', 'lipides', 'glucides', 'protides', 'nom_regime');
+
+		// On veut utiliser le modèle de la recette
+		include CHEMIN_MODELE.'ingredient.php';
+
+		// ajouter_ingredient_dans_bdd() est défini dans ~/modeles/ingredient.php
+		$id_ingr = ajouter_ingredient_dans_bdd($nom_ingr, $type_ingr);
+
+		// Si la base de données a bien voulu ajouter l'ingrédient (pas de doublons)
+		if (ctype_digit($id_ingr)) 
+		{
+			$id_info_nutri = ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $protides);
+			$id_regime = ajouter_regime_dans_bdd($id_ingr, $nom_regime);
+
+			if(ctype_digit($id_info_nutri) && ctype_digit($id_regime))
+			{
+				// Affichage de la confirmation de l'inscription
+				include CHEMIN_VUE.'ingredient_effectuee.php';
+			}
+		}
+		// Gestion des doublons
+		} 
+		else 
+		{
+			// Changement de nom de variable (plus lisible)
+			$erreur =& $id_ingredient;
+
+			// On vérifie que l'erreur concerne bien un doublon
+			if (23000 == $erreur[0]) 
+			{	
+				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
+				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+				$valeur_probleme = $valeur_probleme[1];
+				if ($nom_ingredient == $valeur_probleme) 
+				{
+					$erreurs_recette[] = "Ce nom d'ingrédient est déjà utilisé.";
+				} 
+				else 
+				{
+					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+					var_dump($valeur_probleme);
+				}
+			} 
+			else 
+			{
+				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+			}
+			// On réaffiche le formulaire de création de recettes
+			include CHEMIN_VUE.'ingredient.php';
+		}
+	} 
+	else 
+	{
+		// On affiche à nouveau le formulaire de création de recettes
+		include CHEMIN_VUE.'ingredient.php';
+	}
 }
 
 /*
