@@ -200,6 +200,7 @@ else
 				//echo "yes6";
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
+			echo $nom_recette;
 			//echo "yes7";
 			// On réaffiche le formulaire de création de recettes
 			include CHEMIN_VUE.'etape.php';
