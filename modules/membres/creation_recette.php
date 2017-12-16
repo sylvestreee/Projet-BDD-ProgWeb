@@ -162,13 +162,18 @@ else
 		{
 			echo "yes1";
 			$id_info_nutri = ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $protides);
-			$id_regime = ajouter_regime_dans_bdd($id_ingr, $nom_regime);
 
-			if(ctype_digit($id_info_nutri) && ctype_digit($id_regime))
+			if(ctype_digit($id_info_nutri))
 			{
 				echo "yes2";
-				// Affichage de la confirmation de l'inscription
-				include CHEMIN_VUE.'ingredient_effectuee.php';
+				$id_regime = ajouter_regime_dans_bdd($id_ingr, $nom_regime);
+
+				if(ctype_digit($id_regime))
+				{
+					echo "yes3";
+					// Affichage de la confirmation de l'inscription
+					include CHEMIN_VUE.'ingredient_effectuee.php';
+				}
 			}
 		}
 		// Gestion des doublons
@@ -180,25 +185,25 @@ else
 			// On vérifie que l'erreur concerne bien un doublon
 			if (23000 == $erreur[0]) 
 			{	
-				echo "yes3";
+				echo "yes4";
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
 				$valeur_probleme = $valeur_probleme[1];
 				if ($nom_ingredient == $valeur_probleme) 
 				{
-					echo "yes4";
+					echo "yes5";
 					$erreurs_recette[] = "Ce nom d'ingrédient est déjà utilisé.";
 				} 
 				else 
 				{
-					echo "yes5";
+					echo "yes6";
 					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 					var_dump($valeur_probleme);
 				}
 			} 
 			else 
 			{
-				echo "yes6";
+				echo "yes7";
 				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
 			// On réaffiche le formulaire de création de recettes
@@ -207,7 +212,7 @@ else
 	} 
 	else 
 	{
-		echo "yes7";
+		echo "yes8";
 		// On affiche à nouveau le formulaire de création de recettes
 		include CHEMIN_VUE.'ingredient.php';
 	}

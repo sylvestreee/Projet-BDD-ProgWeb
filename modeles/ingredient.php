@@ -53,8 +53,8 @@ function ajouter_regime_dans_bdd($id_ingr, $nom_regime)
 	$requete->bindValue(':id_ingr', $id_ingr);
 	$requete->bindValue(':nom_regime', $nom_regime);
 
-	if ($requete->execute()) {
-		
+	if ($requete->execute())
+	{
 		return $pdo->lastInsertID();
 	}
 	return $requete->errorInfo();
