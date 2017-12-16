@@ -44,7 +44,7 @@ function ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $
 
 function ajouter_regime_dans_bdd($id_ingr, $nom_regime)
 {
-	$pdo = PDO2::getIstance();
+	$pdo = PDO2::getInstance();
 		
 	$requete = $pdo->prepare("INSERT INTO REGIME SET
 		id_ingr 		= :id_ingr,
