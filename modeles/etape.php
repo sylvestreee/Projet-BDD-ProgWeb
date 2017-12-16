@@ -36,7 +36,7 @@ function recherche_id_recette_par_nom($nom_recette)
 		WHERE 
 		nom_recette like :nom_recette");
 
-	$requete->bindValue(':nom_recette', $nom_recette);
+	$requete->bindValue(':nom_recette', $nom_recette, PDO::PARAM_STR);
 	$requete->execute();
 	
 	if ($result = $requete->fetch()) 
