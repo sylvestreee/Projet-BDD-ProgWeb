@@ -125,7 +125,13 @@ else
 
 	$crea_etape   ->add('Select', 'ingredients')
 				  ->choices($ingredients)
-				  ->label("Ingredients");			  
+				  ->label("Ingredients");	
+
+	$crea_etape   ->add('Text', 'recette')
+				  ->label("Recette choisie");
+
+	$crea_etape   ->add('Text', 'ingredient')
+				  ->label("Ingrédient choisi");		  
 
 	$crea_etape   ->add('Text', 'quantite_etape')
 				  ->label("Quantité d'ingrédients");
