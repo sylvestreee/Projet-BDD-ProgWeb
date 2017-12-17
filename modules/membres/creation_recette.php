@@ -4,7 +4,7 @@ session_start();
 
 if (!utilisateur_est_connecte()) 
 {
-	// On affiche la page d'erreur comme quoi l'utilisateur doit être connecté pour voir la page
+	// L'utilisateur doit être connecté pour avoir accès à la page de création de recettes
 	include CHEMIN_VUE_GLOBALE.'erreur_non_connecte.php';	
 } 
 
@@ -53,30 +53,31 @@ else
 	// Création d'un tableau des erreurs
 	$erreurs_recette = array();
 
-	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
+	// Validation des champs suivant des règles (ex : pour un champ mail, on vérifie que l'utilisateur a bien rentré une adresse mail)
 	if ($crea_recette->is_valid($_POST)) 
 	{
-		// Tentative d'ajout de la recette dans la base de données
+		// Récupération des informations du formulaire
 		list($nom_recette, $descriptif, $difficulte, $prix, $nb_personnes) =
 		$crea_recette->get_cleaned_data('nom_recette', 'descriptif', 'difficulte', 'prix', 'nb_personnes');
 		
-		// ajouter_recette_dans_bdd() est défini dans ~/modeles/recette.php
+		// Ajout de la recette dans la base de données
 		$id_recette = ajouter_recette_dans_bdd($nom_recette, $descriptif, $_SESSION['id'], 
 		$_SESSION['pseudo'], $difficulte, $prix, $nb_personnes);
 
-		// Si la base de données a bien voulu ajouter la recette (pas de doublons)
+		// Si la recette a bien été ajoutée à la BDD
 		if (ctype_digit($id_recette)) 
 		{
-			// Affichage de la confirmation de l'inscription
+			// Affichage de la confirmation de l'ajout de la recette
 			include CHEMIN_VUE.'recette_effectuee.php';
-		// Gestion des doublons
 		} 
+
+		// Gestion des doublons
 		else 
 		{
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_recette;
 
-			// On vérifie que l'erreur concerne bien un doublon
+			// Vérificaton que l'erreur concerne un doublon
 			if (23000 == $erreur[0]) 
 			{	
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
@@ -89,20 +90,20 @@ else
 				else 
 				{
 					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
-					var_dump($valeur_probleme);
 				}
-			} 
+			}
 			else 
 			{
 				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			// On réaffiche le formulaire de création de recettes
+
+			// On réaffiche le formulaire d'ajout de recettes
 			include CHEMIN_VUE.'recette.php';
 		}
 	} 
 	else 
 	{
-		// On affiche à nouveau le formulaire de création de recettes
+		// On affiche à nouveau le formulaire d'ajout de recettes
 		include CHEMIN_VUE.'recette.php';
 	}
 
@@ -110,8 +111,10 @@ else
 
 	$etape_uti = new Form('etape_utilisateur');
 
+	// Affichage d'une liste contenant les recettes créées par l'utilisateur
 	$recettes = recherche_recette_par_id($_SESSION['id']);
 
+	// Affichage d'une liste contenant les ingrédients présents dans la BDD
 	$ingredients = recherche_ingredient();
 
 	$etape_uti    ->add('Select', 'recettes')
@@ -154,26 +157,26 @@ else
 	// Création d'un tableau des erreurs
 	$erreurs_etape = array();
 
-	// Validation des champs suivant les règles en utilisant les données du tableau $_POST
+	// Validation des champs suivant des règles
 	if ($crea_etape->is_valid($_POST)) 
-	{
-		echo $recettes;
-		
-		// Tentative d'ajout du membre dans la base de données
+	{		
+		// Récupération des informations du formulaire
 		list($recette, $ingredient, $quantite_etape, $temps, $type_etape, $description) =
 		$crea_etape->get_cleaned_data('recette', 'ingredient', 'quantite_etape', 'temps', 'type_etape', 'description');
 
+		// Récupération de l'id de la recette choisie par l'utilisateur
 		$id_recette = recherche_id_recette_par_nom($recette);
+
+		// Récupération de l'id de l'ingrédient choisi par l'utilisateur
 		$id_ingr = recherche_id_ingr_par_nom($ingredient);
 
-		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, 
-			$description);
+		// Ajout de l'étape dans la base de données
+		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
 
-		// Si la base de données a bien voulu ajouter l'étape (pas de doublons)
+		// Si l'étape a bien été ajoutée à la BDD
 		if (ctype_digit($id_etape)) 
 		{
-			// Affichage de la confirmation de l'inscription
+			// Affichage de la confirmation de l'ajout de l'étape
 			include CHEMIN_VUE.'etape_effectuee.php';
 		} 
 		// Gestion des doublons
@@ -182,22 +185,12 @@ else
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_etape;
 
-			// On vérifie que l'erreur concerne bien un doublon
+			// Vérificaton que l'erreur concerne un doublon
 			if (23000 == $erreur[0]) 
 			{	
-				echo "yes3";
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
-				$valeur_probleme = $valeur_probleme[1];
-				if ($nom_etape == $valeur_probleme) 
-				{
-					$erreurs_etape[] = "Ce nom de recette est déjà utilisé.";
-				} 
-				else 
-				{
-					$erreurs_etape[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
-					var_dump($valeur_probleme);
-				}
+				$erreurs_etape[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 			} 
 			else 
 			{
@@ -229,8 +222,6 @@ else
 						'3' => '3'))
 						->label("Type");
 
-	//informations nutritionnelles
-
 	$crea_ingredient   ->add('Text', 'calories')
 					   ->label("Calories");
 
@@ -243,35 +234,36 @@ else
 	$crea_ingredient   ->add('Text', 'protides')
 					   ->label("Protides");
 
-	//regime
-
 	$crea_ingredient   ->add('Text', 'nom_regime')
 					   ->label("Régime");
 
 	$crea_ingredient   ->add('Submit', 'ingredient')
 					   ->value("Sauvegarder l'ingrédient");
 
+	//Validation des champs suivant des règles			   
 	if ($crea_ingredient->is_valid($_POST)) 
 	{
-		// Tentative d'ajout de l'ingrédient dans la base de données
+		// Récupération des informations du formulaire
 		list($nom_ingr, $type_ingr, $calories, $lipides, $glucides, $protides, $nom_regime) =
 		$crea_ingredient->get_cleaned_data('nom_ingr', 'type_ingr', 'calories', 'lipides', 'glucides', 'protides', 'nom_regime');
 
-		// ajouter_ingredient_dans_bdd() est défini dans ~/modeles/ingredient.php
+		// Ajout de l'éingrédient dans la base de données
 		$id_ingr = ajouter_ingredient_dans_bdd($nom_ingr, $type_ingr);
 
-		// Si la base de données a bien voulu ajouter l'ingrédient (pas de doublons)
+		// Si l'ingrédient a bien été ajoutée à la BDD
 		if (ctype_digit($id_ingr)) 
 		{
 			$id_info_nutri = ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $protides);
 
+			// Si les informations nutritionelles de l'ingrédient ont bien été ajouté à la BDD
 			if(ctype_digit($id_info_nutri))
 			{
 				$id_regime = ajouter_regime_dans_bdd($id_ingr, $nom_regime);
 
+				// Si le régime de l'ingrédient a bien été ajouté à la BDD
 				if(ctype_digit($id_regime))
 				{
-					// Affichage de la confirmation de l'inscription
+					// Affichage de la confirmation de l'ajout de l'ingrédient
 					include CHEMIN_VUE.'ingredient_effectuee.php';
 				}
 			}
@@ -283,7 +275,7 @@ else
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_ingredient;
 
-			// On vérifie que l'erreur concerne bien un doublon
+			// Vérificaton que l'erreur concerne un doublon
 			if (23000 == $erreur[0]) 
 			{	
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
@@ -296,20 +288,19 @@ else
 				else 
 				{
 					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
-					var_dump($valeur_probleme);
 				}
 			} 
 			else 
 			{
 				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
-			// On réaffiche le formulaire de création de recettes
+			// On réaffiche le formulaire de création d'ingrédients
 			include CHEMIN_VUE.'ingredient.php';
 		}
 	} 
 	else 
 	{
-		// On affiche à nouveau le formulaire de création de recettes
+		// On affiche à nouveau le formulaire de création d'ingrédients
 		include CHEMIN_VUE.'ingredient.php';
 	}
 }
