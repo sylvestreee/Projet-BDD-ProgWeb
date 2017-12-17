@@ -958,7 +958,7 @@ class Form_Select extends Form_Input {
 
 		parent::__construct($name, $form);
 		$this->choices = array();
-		unset($this->attrs['type']);
+		$this->attrs['type'] = 'select';
 	}
 
 	public function choices($array) {
