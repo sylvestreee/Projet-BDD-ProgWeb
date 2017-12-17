@@ -12,4 +12,14 @@
 
 <?php
 
-    echo $crea_recette;
+if (!empty($erreurs_recette)) 
+{
+	echo '<ul>' . "\n";
+	foreach ($erreurs_recette as $e) 
+	{
+		echo ' <li>' . $e . '</li>' . "\n";
+	}
+	echo '</ul>';
+}
+
+echo $crea_recette;

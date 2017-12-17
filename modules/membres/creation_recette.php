@@ -240,6 +240,9 @@ else
 	$crea_ingredient   ->add('Submit', 'ingredient')
 					   ->value("Sauvegarder l'ingrédient");
 
+	// Création d'un tableau des erreurs
+	$erreurs_ingredient = array();
+
 	//Validation des champs suivant des règles			   
 	if ($crea_ingredient->is_valid($_POST)) 
 	{
@@ -283,16 +286,16 @@ else
 				$valeur_probleme = $valeur_probleme[1];
 				if ($nom_ingredient == $valeur_probleme) 
 				{
-					$erreurs_recette[] = "Ce nom d'ingrédient est déjà utilisé.";
+					$erreurs_ingredient[] = "Ce nom d'ingrédient est déjà utilisé.";
 				} 
 				else 
 				{
-					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+					$erreurs_ingredient[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 				}
 			} 
 			else 
 			{
-				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+				$erreurs_ingredient[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
 			// On réaffiche le formulaire de création d'ingrédients
 			include CHEMIN_VUE.'ingredient.php';

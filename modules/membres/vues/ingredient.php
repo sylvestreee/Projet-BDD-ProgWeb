@@ -9,4 +9,14 @@
 
 <?php
 
-    echo $crea_ingredient;
+if (!empty($erreurs_ingredient)) 
+{
+	echo '<ul>' . "\n";
+	foreach ($erreurs_ingredient as $e) 
+	{
+		echo ' <li>' . $e . '</li>' . "\n";
+	}
+	echo '</ul>';
+}
+
+echo $crea_ingredient;

@@ -9,5 +9,15 @@
 
 <?php
 
-	echo $etape_uti;
-    echo $crea_etape;
+if (!empty($erreurs_etape)) 
+{
+	echo '<ul>' . "\n";
+	foreach ($erreurs_etape as $e) 
+	{
+		echo ' <li>' . $e . '</li>' . "\n";
+	}
+	echo '</ul>';
+}
+
+echo $etape_uti;
+echo $crea_etape;
