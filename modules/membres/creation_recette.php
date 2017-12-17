@@ -81,7 +81,7 @@ else
 			if (23000 == $erreur[0]) 
 			{	
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
-				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[1], $valeur_probleme);
 				$valeur_probleme = $valeur_probleme[1];
 				if ($nom_recette == $valeur_probleme) 
 				{
