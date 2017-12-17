@@ -111,21 +111,23 @@ else
 
 //AJOUT ETAPE
 
-	$crea_etape = new Form('creation_etape');
-
-	$crea_etape   ->method('POST');
+	$etape_uti = new Form('etape_utilisateur');
 
 	$recettes = recherche_recette_par_id($_SESSION['id']);
 
 	$ingredients = recherche_ingredient();
 
-	$crea_etape   ->add('Select', 'recettes')
+	$etape_uti    ->add('Select', 'recettes')
 				  ->choices($recettes)
 				  ->label("Recettes");
 
-	$crea_etape   ->add('Select', 'ingredients')
+	$etape_uti    ->add('Select', 'ingredients')
 				  ->choices($ingredients)
-				  ->label("Ingredients");	
+				  ->label("Ingredients");
+
+	$crea_etape = new Form('creation_etape');
+
+	$crea_etape   ->method('POST');
 
 	$crea_etape   ->add('Text', 'recette')
 				  ->label("Recette choisie");
@@ -161,17 +163,15 @@ else
 		echo $recettes;
 		
 		// Tentative d'ajout du membre dans la base de données
-		list($recettes, $ingredients, $quantite_etape, $temps, $type_etape, $description) =
-		$crea_etape->get_cleaned_data('recettes', 'ingredients', 'quantite_etape', 'temps', 'type_etape', 'description');
+		list($recette, $ingredient, $quantite_etape, $temps, $type_etape, $description) =
+		$crea_etape->get_cleaned_data('recette', 'ingredient', 'quantite_etape', 'temps', 'type_etape', 'description');
 
-		$nom_recette = "Macaron";
-		$id_recette = recherche_id_recette_par_nom($nom_recette);
-
-		$nom_ingr = "Carotte";
-		$id_ingr = recherche_id_ingr_par_nom($nom_ingr);
+		$id_recette = recherche_id_recette_par_nom($recette);
+		$id_ingr = recherche_id_ingr_par_nom($ingredient);
 
 		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description);
+		$id_etape = ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, 
+			$description);
 
 		// Si la base de données a bien voulu ajouter l'étape (pas de doublons)
 		if (ctype_digit($id_etape)) 

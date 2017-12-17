@@ -9,4 +9,5 @@
 
 <?php
 
+	echo $etape_utilisateur;
     echo $crea_etape;
