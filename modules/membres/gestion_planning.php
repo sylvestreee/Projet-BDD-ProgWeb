@@ -17,25 +17,32 @@ else
 //AJOUT REPAS
 
 	$monday = date('d/m/y', strtotime('monday this week'));
+	$monday_r = date('y/m/d', strtotime('monday this week'));
+	$planning_monday = recherche_recette_date($_SESSION['id'], $monday_r);
 
 	$tuesday = date('d/m/y', strtotime('tuesday this week'));
+	$tuesday_r = date('y/m/d', strtotime('tuesday this week'));
+	$planning_tuesday = recherche_recette_date($_SESSION['id'], $tuesday_r);
 
 	$wednesday = date('d/m/y', strtotime('wednesday this week'));
-	
 	$wednesday_r = date('y/m/d', strtotime('wednesday this week'));
-
-//TEST
-	$planning = recherche_recette_date($_SESSION['id'], $wednesday);
-//TEST
-
+	$planning_wednesday = recherche_recette_date($_SESSION['id'], $wednesday_r);
 
 	$thursday = date('d/m/y', strtotime('thursday this week'));
+	$thursday_r = date('y/m/d', strtotime('thursday this week'));
+	$planning_thursday = recherche_recette_date($_SESSION['id'], $thursday_r);
 
 	$friday = date('d/m/y', strtotime('friday this week'));
+	$friday_r = date('y/m/d', strtotime('friday this week'));
+	$planning_friday = recherche_recette_date($_SESSION['id'], $friday_r);
 
 	$saturday = date('d/m/y', strtotime('saturday this week'));
+	$saturday_r = date('y/m/d', strtotime('saturday this week'));
+	$planning_saturday = recherche_recette_date($_SESSION['id'], $saturday_r);
 
 	$sunday = date('d/m/y', strtotime('sunday this week'));
+	$sunday_r = date('y/m/d', strtotime('sunday this week'));
+	$planning_sunday = recherche_recette_date($_SESSION['id'], $sunday_r);
 
 	$recette = new Form('recette');
 
