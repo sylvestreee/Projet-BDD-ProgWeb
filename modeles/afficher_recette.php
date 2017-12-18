@@ -41,22 +41,3 @@ function info_etapes($id_recette)
 	}
 	return false;
 }
-
-function recherche_id_recette_par_nom($nom_recette)
-{
-	$pdo = PDO2::getInstance();
-
-	$requete = $pdo->prepare("SELECT id_recette
-		FROM RECETTE
-		WHERE 
-		nom_recette like :nom_recette");
-
-	$requete->bindValue(':nom_recette', $nom_recette);
-	$requete->execute();
-
-	if ($result = $requete->fetch()) 
-	{
-		return $result['id_recette'];
-	}
-	return false;
-}

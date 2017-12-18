@@ -7,6 +7,7 @@ session_start();
 include CHEMIN_LIB.'form.php';
 include CHEMIN_MODELE.'rechercher_recette.php';
 include CHEMIN_MODELE.'afficher_recette.php';
+include CHEMIN_MODELE.'etape.php';
 
 // RECHERCHE DES RECETTES
 
