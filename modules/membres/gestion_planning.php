@@ -45,8 +45,8 @@ else
 					  ->label("Date du repas (dd/mm/yy)");
 
 	$gest_planning    ->add('Date', 'heure')
-					  ->format('HH/MM')
-					  ->label("Heure du repas (HH/MM)");
+					  ->format('HH:MM')
+					  ->label("Heure du repas (HH:MM)");
 
 	$gest_planning 	  ->add('Submit', 'recette')
 					  ->value("Ajouter la recette");
@@ -78,6 +78,8 @@ else
 				include CHEMIN_VUE.'planning_recette_effectuee.php';
 			}
 		} 
+
+//OUBLIE PAS
 
 		// Gestion des doublons
 		else 
