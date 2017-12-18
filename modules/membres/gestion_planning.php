@@ -42,7 +42,7 @@ else
 
 	$gest_planning    ->add('Date', 'date_repas')
 					  ->format('dd/mm/yy')
-					  ->label("Date du repas (dd/mm/yy)");
+					  ->label("Date du repas (yy/mm/dd)");
 
 	$gest_planning    ->add('Text', 'heure')
 					  ->label("Heure du repas (hh:mm)");
