@@ -24,6 +24,11 @@ else
 	
 	$wednesday_r = date('y/m/d', strtotime('wednesday this week'));
 
+//TEST
+	$planning = recherche_recette_date($_SESSION['id'], $wednesday_r);
+//TEST
+
+
 	$thursday = date('d/m/y', strtotime('thursday this week'));
 
 	$friday = date('d/m/y', strtotime('friday this week'));
@@ -83,8 +88,6 @@ else
 
 			if (ctype_digit($id_repas_recette))
 			{
-				$planning = recherche_recette_date($_SESSION, $wednesday_r);
-
 				// Affichage de la confirmation de l'ajout de la recette
 				include CHEMIN_VUE.'planning_recette_effectuee.php';
 			}

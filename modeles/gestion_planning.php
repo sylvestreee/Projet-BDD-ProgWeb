@@ -64,7 +64,7 @@ function recherche_recette_date($id_utilisateur, $date_repas)
 	$requete = $pdo->prepare("SELECT heure
 		FROM REPAS
 		WHERE id_utilisateur = :id_utilisateur
-		AND date_repas = $date_repas");
+		AND date_repas = :date_repas");
 	
 	$requete->bindValue(':id_utilisateur', $id_utilisateur);
 	$requete->bindValue(':date_repas', $date_repas);
