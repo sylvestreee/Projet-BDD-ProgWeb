@@ -5,8 +5,8 @@ session_start();
 // Pas de vérification de droits d'accès nécessaire
 
 include CHEMIN_LIB.'form.php';
-include CHEMIN_MODELE.'recette.php';
-include CHEMIN_MODELE.'affichage_recette.php';
+include CHEMIN_MODELE.'rechercher_recette.php';
+include CHEMIN_MODELE.'afficher_recette.php';
 
 // RECHERCHE DES RECETTES
 
@@ -26,12 +26,12 @@ if ($form_recherche_nom->is_valid($_POST))
 
 	$id_recette = recherche_recette_par_nom($phrase);
 
-	include CHEMIN_VUE.'resultat.php';
+	include CHEMIN_VUE.'resultat_rechercher.php';
 }
 
 else
 {
-	include CHEMIN_VUE.'afficher_resultat_recherche_recette.php';	
+	include CHEMIN_VUE.'rechercher_recette.php';	
 }
 
 // AFFICHAGE DES RECETTES
@@ -56,12 +56,10 @@ if ($affichage_recette->is_valid($_POST))
 	$id_recette = recherche_id_recette_par_nom($nom_recette);
 	$info_etapes = info_etapes($id_recette);
 
-	include CHEMIN_VUE.'affichage_recette.php';
-}
-else
-{
-	include CHEMIN_VUE.'afficher_resultat_affichage_recette.php';		
+	include CHEMIN_VUE.'resultat_afficher.php';
 }
 
-/* Création d'un tableau des erreurs
-$erreurs_recherche = array();*/
+else
+{
+	include CHEMIN_VUE.'afficher_recette.php';		
+}
