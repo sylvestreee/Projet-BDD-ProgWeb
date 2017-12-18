@@ -25,7 +25,7 @@ else
 	$wednesday_r = date('y/m/d', strtotime('wednesday this week'));
 
 //TEST
-	$planning = recherche_recette_date($_SESSION['id'], $wednesday_r);
+	$planning = recherche_recette_date($_SESSION['id'], $wednesday);
 //TEST
 
 
