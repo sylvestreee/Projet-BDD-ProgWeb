@@ -22,8 +22,10 @@ $form_recherche_nom 	->add('Submit', 'submit')
 
 if ($form_recherche_nom->is_valid($_POST)) 
 {	
+	$phrase = $affichage_recette->get_cleaned_data('phrase');
+
 	$id_recette = recherche_recette_par_nom($phrase);
-	
+
 	include CHEMIN_VUE.'resultat.php';
 }
 
