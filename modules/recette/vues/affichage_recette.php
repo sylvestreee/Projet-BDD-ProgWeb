@@ -5,13 +5,12 @@ echo "Auteur : ".$info_recette["auteur"]."<br>";
 echo "Descriptif : ".$info_recette["descriptif"]."<br>"; 
 echo "Difficulte : ".$info_recette["difficulte"]."<br>"; 
 echo "Prix : ".$info_recette["prix"]."<br>";
-echo "Nombre de personnes : ".$info_recette["nb_personnes"]."<br>"; 
+echo "Nombre de personnes : ".$info_recette["nb_personnes"]."<br>"."<br>"; 
 
 $nb = 1;
 
 foreach($info_etapes as $e)
 {
-	"<br>";
 	echo "Etape n°".$nb."<br>"; 
 	$nb++;
 
