@@ -33,7 +33,7 @@ else
 
 	$gest_planning    ->add('Date', 'date')
 					  ->format('dd/mm/yy')
-					  ->label("Nom de la recette");
+					  ->label("Date du repas");
 
 	$gest_planning 	  ->add('Submit', 'recette')
 					  ->value("Ajouter la recette");
