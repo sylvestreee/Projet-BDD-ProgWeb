@@ -59,7 +59,7 @@ else
 	{
 		// Récupération des informations du formulaire
 		list($recette_planning, $date_repas, $heure) =
-		$crea_recette->get_cleaned_data('recette_planning', 'date_repas', 'heure');
+		$gest_planning->get_cleaned_data('recette_planning', 'date_repas', 'heure');
 		
 		// Ajout de la recette dans la base de données
 		$id_repas = ajouter_repas_dans_bdd($_SESSION['id'], $date_repas, $heure);
