@@ -16,9 +16,17 @@ echo $gest_planning;
 echo "Lundi ".$monday."<br>"."<br>";
 echo "Mardi ".$tuesday."<br>"."<br>";
 echo "Mercredi ".$wednesday."<br>"."<br>";
-foreach($planning as $p)
+if(empty($planning))
 {
-	echo "Heure : ".$e["heure"]."<br>"."<br>"; 
+	echo "Merde !";
+}
+
+else
+{
+	foreach($planning as $p)
+	{
+		echo "Heure : ".$e["heure"]."<br>"."<br>"; 
+	}
 }
 
 echo "Jeudi ".$thursday."<br>"."<br>";
