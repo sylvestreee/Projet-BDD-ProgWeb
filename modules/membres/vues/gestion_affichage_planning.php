@@ -18,7 +18,7 @@ if(!empty($planning_monday))
 {
 	foreach($planning_monday as $pm)
 	{
-		echo "Heure : ".$pm["heure"]."<br>"; 
+		echo $pm["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
@@ -28,7 +28,7 @@ if(!empty($planning_tuesday))
 {
 	foreach($planning_tuesday as $pt)
 	{
-		echo "Heure : ".$pt["heure"]."<br>"; 
+		echo $pt["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
@@ -38,7 +38,7 @@ if(!empty($planning_wednesday))
 {
 	foreach($planning_wednesday as $pw)
 	{
-		echo "Heure : ".$pw["heure"]."<br>"; 
+		echo $pw["id_recette"]." à ".$pm["heure"]."<br>";  
 	}
 	echo "<br>";
 }
@@ -48,7 +48,7 @@ if(!empty($planning_thursday))
 {
 	foreach($planning_thursday as $pth)
 	{
-		echo "Heure : ".$pth["heure"]."<br>"; 
+		echo $pth["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
@@ -58,7 +58,7 @@ if(!empty($planning_friday))
 {
 	foreach($planning_friday as $pf)
 	{
-		echo "Heure : ".$pf["heure"]."<br>"; 
+		echo $pf["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
@@ -68,7 +68,7 @@ if(!empty($planning_saturday))
 {
 	foreach($planning_saturday as $psa)
 	{
-		echo "Heure : ".$psa["heure"]."<br>"; 
+		echo $psa["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
@@ -78,7 +78,7 @@ if(!empty($planning_sunday))
 {
 	foreach($planning_sunday as $psu)
 	{
-		echo "Heure : ".$psu["heure"]."<br>"; 
+		echo $psu["id_recette"]." à ".$pm["heure"]."<br>"; 
 	}
 	echo "<br>";
 }
