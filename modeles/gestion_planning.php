@@ -61,9 +61,11 @@ function recherche_recette_date($id_utilisateur, $date_repas)
 {
 	$pdo = PDO2::getInstance();
 	
-	$requete = $pdo->prepare("SELECT r.heure, rr.id_recette
+	$requete = $pdo->prepare("SELECT r.heure, r1.nom_recette
 		FROM REPAS r
-		INNER JOIN REPAS_RECETTE rr ON r.id_repas = rr.id_repas
+		INNER JOIN (SELECT rr.id_repas, re.nom_recette
+					FROM REPAS_RECETTE rr
+					INNER JOIN RECETTE re ON rr.id_recette = re.id_recette) r1 ON r.id_repas = r1.id_repas
 		WHERE id_utilisateur = :id_utilisateur
 		AND date_repas = :date_repas");
 	
@@ -78,4 +80,3 @@ function recherche_recette_date($id_utilisateur, $date_repas)
 	}
 	return false;
 }
-
