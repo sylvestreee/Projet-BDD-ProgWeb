@@ -32,7 +32,7 @@ function recherche_recette_par_ingr($demande)
 	$phrase .= $demande;
 	$phrase .= "%";
 	
-	$requete = $pdo->prepare("SELECT r.nom_recette
+	$requete = $pdo->prepare("SELECT distinct(r.nom_recette)
 		FROM RECETTE r
 		INNER JOIN (SELECT e.id_recette, i.nom_ingr
 					FROM ETAPE e
