@@ -38,5 +38,5 @@ else
 	$gest_planning 	  ->add('Submit', 'recette')
 					  ->value("Ajouter la recette");
 
-	include CHEMIN_VUE.'gestion_affichage_planning';
+	include CHEMIN_VUE.'gestion_affichage_planning.php';
 }
