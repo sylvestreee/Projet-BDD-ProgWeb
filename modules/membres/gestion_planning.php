@@ -44,9 +44,8 @@ else
 					  ->format('dd/mm/yy')
 					  ->label("Date du repas (dd/mm/yy)");
 
-	$gest_planning    ->add('Date', 'heure')
-					  ->format('HH')
-					  ->label("Heure du repas (HH)");
+	$gest_planning    ->add('Text', 'heure')
+					  ->label("Heure du repas (hh:mm)");
 
 	$gest_planning 	  ->add('Submit', 'recette')
 					  ->value("Ajouter la recette");
