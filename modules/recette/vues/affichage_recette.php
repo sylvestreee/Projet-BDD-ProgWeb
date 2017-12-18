@@ -9,7 +9,7 @@ echo "Nombre de personnes : ".$info_recette["nb_personnes"]."<br>";
 
 foreach($info_etapes as $e)
 {
-	echo $e["e.description"]."<br>"; 
+	echo $e["description"]."<br>"; 
 	echo $e["i.nom_ingr"]."<br>";
 	echo $e["r.nom_regime"]."<br>"; 
 	echo $e["e.quantite_etape"]."<br>"; 
