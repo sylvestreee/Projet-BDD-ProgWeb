@@ -66,8 +66,9 @@ function recherche_recette_date($id_utilisateur, $date_repas)
 		INNER JOIN (SELECT rr.id_repas, re.nom_recette
 					FROM REPAS_RECETTE rr
 					INNER JOIN RECETTE re ON rr.id_recette = re.id_recette) r1 ON r.id_repas = r1.id_repas
-		WHERE id_utilisateur = :id_utilisateur
-		AND date_repas = :date_repas");
+		WHERE r.id_utilisateur = :id_utilisateur
+		AND r.date_repas = :date_repas
+		ORDER BY r.heure");
 	
 	$requete->bindValue(':id_utilisateur', $id_utilisateur);
 	$requete->bindValue(':date_repas', $date_repas);
