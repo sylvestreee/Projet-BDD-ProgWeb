@@ -4,7 +4,7 @@
 
 if(empty($id_recette))
 {
-	echo "Aucune recettes trouvées"."<br>";
+	echo "Aucune recette trouvée"."<br>";
 }
 
 else
