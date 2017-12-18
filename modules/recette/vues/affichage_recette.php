@@ -10,10 +10,10 @@ echo "Nombre de personnes : ".$info_recette["nb_personnes"]."<br>";
 foreach($info_etapes as $e)
 {
 	echo $e["description"]."<br>"; 
-	echo $e["i.nom_ingr"]."<br>";
-	echo $e["r.nom_regime"]."<br>"; 
-	echo $e["e.quantite_etape"]."<br>"; 
-	echo $e["e.temps"]."<br>"; 
-	echo $e["e.type_etape"]."<br>"."<br>"; 
+	echo $e["nom_ingr"]."<br>";
+	echo $e["nom_regime"]."<br>"; 
+	echo $e["quantite_etape"]."<br>"; 
+	echo $e["temps"]."<br>"; 
+	echo $e["type_etape"]."<br>"."<br>"; 
 }
 
