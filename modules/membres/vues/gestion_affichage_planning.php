@@ -7,17 +7,13 @@
 echo $recette;
 echo $gest_planning;
 
+?>
+
+<h3> Planning de la semaine du <?php echo htmlspecialchars($monday)?> au <?php echo htmlspecialchars($sunday)?> </h3>
+
 // PLANNING
 
-$monday = date('d/m', strtotime('monday this week'));
-$tuesday = date('d/m', strtotime('tuesday this week'));
-$wednesday = date('d/m', strtotime('wednesday this week'));
-$thursday = date('d/m', strtotime('thursday this week'));
-$friday = date('d/m', strtotime('friday this week'));
-$saturday = date('d/m', strtotime('saturday this week'));
-$sunday = date('d/m', strtotime('sunday this week'));
-
-echo "Planning de la semaine du ".$monday." au ".$sunday."<br>"."<br>";
+<?php
 
 echo "Lundi ".$monday."<br>"."<br>";
 echo "Mardi ".$tuesday."<br>"."<br>";
@@ -27,4 +23,5 @@ echo "Lundi ".$friday."<br>"."<br>";
 echo "Lundi ".$saturday."<br>"."<br>";
 echo "Lundi ".$sunday."<br>"."<br>";
 
+?>
 

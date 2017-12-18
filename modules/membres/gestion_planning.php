@@ -15,6 +15,14 @@ else
 
 //AJOUT REPAS
 
+	$monday = date('d/m', strtotime('monday this week'));
+	$tuesday = date('d/m', strtotime('tuesday this week'));
+	$wednesday = date('d/m', strtotime('wednesday this week'));
+	$thursday = date('d/m', strtotime('thursday this week'));
+	$friday = date('d/m', strtotime('friday this week'));
+	$saturday = date('d/m', strtotime('saturday this week'));
+	$sunday = date('d/m', strtotime('sunday this week'));
+
 	$recette = new Form('recette');
 
 	// Affichage d'une liste contenant les recettes présentes dans la BDD
