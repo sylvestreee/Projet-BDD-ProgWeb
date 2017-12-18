@@ -20,7 +20,7 @@ else
 	// Affichage d'une liste contenant les recettes présentes dans la BDD
 	$recettes = recherche_recette();
 
-	$recette      ->add('Select', 'recettes')
+	$recette      ->add('Select', 'recettes_planning')
 				  ->choices($recettes)
 				  ->label("Recettes");
 
@@ -28,7 +28,7 @@ else
 
 	$gest_planning    ->method('POST');
 
-	$gest_planning    ->add('Text', 'recette')
+	$gest_planning    ->add('Text', 'recette_planning')
 				      ->label("Recette choisie");
 
 	$gest_planning    ->add('Date', 'date')
