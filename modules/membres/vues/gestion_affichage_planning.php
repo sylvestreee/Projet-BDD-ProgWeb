@@ -20,6 +20,7 @@ if(!empty($planning_monday))
 	{
 		echo "Heure : ".$pm["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Mardi ".$tuesday."<br>"."<br>";
@@ -29,6 +30,7 @@ if(!empty($planning_tuesday))
 	{
 		echo "Heure : ".$pt["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Mercredi ".$wednesday."<br>"."<br>";
@@ -38,6 +40,7 @@ if(!empty($planning_wednesday))
 	{
 		echo "Heure : ".$pw["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Jeudi ".$thursday."<br>"."<br>";
@@ -47,6 +50,7 @@ if(!empty($planning_thursday))
 	{
 		echo "Heure : ".$pth["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Vendredi ".$friday."<br>"."<br>";
@@ -56,6 +60,7 @@ if(!empty($planning_friday))
 	{
 		echo "Heure : ".$pf["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Samedi ".$saturday."<br>"."<br>";
@@ -65,6 +70,7 @@ if(!empty($planning_saturday))
 	{
 		echo "Heure : ".$psa["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
 
 echo "Dimanche ".$sunday."<br>"."<br>";
@@ -74,8 +80,8 @@ if(!empty($planning_sunday))
 	{
 		echo "Heure : ".$psu["heure"]."<br>"; 
 	}
+	echo "<br>";
 }
-
 
 ?>
 
