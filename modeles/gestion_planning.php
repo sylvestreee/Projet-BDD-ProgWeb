@@ -30,7 +30,7 @@ function ajouter_repas_recette_dans_bdd($id_recette, $id_repas)
 
 	$requete->bindValue(':id_recette', $id_recette);
 	$requete->bindValue(':id_repas', $id_repas);
-	
+
 	if ($requete->execute())
 	{	
 		return $pdo->lastInsertID();
@@ -46,6 +46,28 @@ function recherche_recette()
 	$requete = $pdo->prepare("SELECT nom_recette
 		FROM RECETTE");
 	
+	$requete->execute();
+	
+	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
+	{
+		$requete->closeCursor();
+		return $result;
+	}
+	return false;
+}
+
+// Recherche les recettes plannifiées par un utilisateur à partir de l'id de l'utilisateur et d'une date
+function recherche_recette_date($id_utilisateur, $date_repas)
+{
+	$pdo = PDO2::getInstance();
+	
+	$requete = $pdo->prepare("SELECT heure
+		FROM REPAS
+		WHERE id_utilisateur = :id_utilisateur
+		AND date_repas = $date_repas");
+	
+	$requete->bindValue(':id_utilisateur', $id_utilisateur);
+	$requete->bindValue(':date_repas', $date_repas);
 	$requete->execute();
 	
 	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
