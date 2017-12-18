@@ -21,7 +21,7 @@
 		<li><a href="index.php?module=membres&amp;action=afficher_profil">Profil</a></li>
 		<li><a href="index.php?module=membres&amp;action=creation_recette">Création de recette</a></li>
 		<li><a href="index.php?module=recette&amp;action=rechercher_afficher_recette">Recherche/Affichage d'une recette</a></li>
-		<li><a href="index.php?module=membres&amp;action=gestation_planning">Gestation du planning</a></li>
+		<li><a href="index.php?module=membres&amp;action=gestion_planning">Gestation du planning</a></li>
 	</ul>
 	<?php } ?>
 </div>
