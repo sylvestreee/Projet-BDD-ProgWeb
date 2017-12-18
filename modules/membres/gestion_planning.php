@@ -17,11 +17,19 @@ else
 //AJOUT REPAS
 
 	$monday = date('d/m/y', strtotime('monday this week'));
+
 	$tuesday = date('d/m/y', strtotime('tuesday this week'));
+
 	$wednesday = date('d/m/y', strtotime('wednesday this week'));
+	
+	$wednesday_r = date('y/m/d', strtotime('wednesday this week'));
+
 	$thursday = date('d/m/y', strtotime('thursday this week'));
+
 	$friday = date('d/m/y', strtotime('friday this week'));
+
 	$saturday = date('d/m/y', strtotime('saturday this week'));
+
 	$sunday = date('d/m/y', strtotime('sunday this week'));
 
 	$recette = new Form('recette');
@@ -56,7 +64,8 @@ else
 
 	// Validation des champs suivant des règles
 	if ($gest_planning->is_valid($_POST)) 
-	{
+	{ 
+
 		// Récupération des informations du formulaire
 		list($recette_planning, $date_repas, $heure) =
 		$gest_planning->get_cleaned_data('recette_planning', 'date_repas', 'heure');
@@ -74,7 +83,8 @@ else
 
 			if (ctype_digit($id_repas_recette))
 			{
-				$planning = recherche_recette_date($_SESSION['id'], $wednesday);
+				$planning = recherche_recette_date($_SESSION, $wednesday_r);
+
 				// Affichage de la confirmation de l'ajout de la recette
 				include CHEMIN_VUE.'planning_recette_effectuee.php';
 			}

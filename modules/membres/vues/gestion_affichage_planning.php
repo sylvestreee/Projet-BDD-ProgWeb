@@ -25,7 +25,7 @@ else
 {
 	foreach($planning as $p)
 	{
-		echo "Heure : ".$e["heure"]."<br>"."<br>"; 
+		echo "Heure : ".$p["heure"]."<br>"."<br>"; 
 	}
 }
 
