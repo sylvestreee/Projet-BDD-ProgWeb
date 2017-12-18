@@ -1,5 +1,6 @@
 <?php
 
+// Recherche des recettes à partir d'un string
 function recherche_recette_par_nom($demande)
 {
 	$pdo = PDO2::getInstance();
@@ -24,6 +25,7 @@ function recherche_recette_par_nom($demande)
 	return false;
 }
 
+// Recherche des recettes à partir du nom d'un ingrédient
 function recherche_recette_par_ingr($demande)
 {
 	$pdo = PDO2::getInstance();

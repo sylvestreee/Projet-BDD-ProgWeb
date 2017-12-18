@@ -1,5 +1,6 @@
 <?php
 
+// Vérifie l'existence d'un utilisateur
 function combinaison_connexion_valide($nom_utilisateur, $mot_de_passe) {
 
 	$pdo = PDO2::getInstance();
@@ -21,6 +22,7 @@ function combinaison_connexion_valide($nom_utilisateur, $mot_de_passe) {
 	return false;
 }
 
+// Récupère les informations d'un utilisateur
 function lire_infos_utilisateur($id_utilisateur) {
 
 	$pdo = PDO2::getInstance();
@@ -40,14 +42,3 @@ function lire_infos_utilisateur($id_utilisateur) {
 	}
 	return false;
 }
-
-function get_id()
-{
-	
-}
-
-function get_login()
-{
-	
-}
-

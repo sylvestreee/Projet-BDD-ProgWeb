@@ -1,5 +1,6 @@
 <?php
 
+// Ajout dans la table ETAPE
 function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, $type_etape, $description) 
 {
 	$pdo = PDO2::getInstance();
@@ -26,7 +27,7 @@ function ajouter_etape_dans_bdd($id_recette, $id_ingr, $quantite_etape, $temps, 
 	return $requete->errorInfo();
 }
 
-// Recherche l'id d'une recette à partir de son nom
+// Recherche l'identifiant d'une recette à partir de son nom
 function recherche_id_recette_par_nom($nom_recette)
 {
 	$pdo = PDO2::getInstance();
@@ -45,7 +46,7 @@ function recherche_id_recette_par_nom($nom_recette)
 	return false;
 }
 
-// Recherche l'id d'un ingrédient à partir de son nom
+// Recherche l'identifiant d'un ingrédient à partir de son nom
 function recherche_id_ingr_par_nom($nom_ingr)
 {
 	$pdo = PDO2::getInstance();
@@ -65,7 +66,7 @@ function recherche_id_ingr_par_nom($nom_ingr)
 	return false;
 }
 
-// Recherche les recettes créées par l'utilisateur
+// Recherche les recettes créées par un utilisateur à partir de son identifiant
 function recherche_recette_par_id($id_utilisateur)
 {
 	$pdo = PDO2::getInstance();

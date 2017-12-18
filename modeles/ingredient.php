@@ -1,5 +1,6 @@
 <?php
 
+// Ajout dans la table INGREDIENT
 function ajouter_ingredient_dans_bdd($nom_ingr, $type_ingr) 
 {
 	$pdo = PDO2::getInstance();
@@ -18,6 +19,7 @@ function ajouter_ingredient_dans_bdd($nom_ingr, $type_ingr)
 	return $requete->errorInfo();
 }
 
+// Ajout dans la table INFORMATIONS_NUTRITIONNELLES
 function ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $protides)
 {	
 	$pdo = PDO2::getInstance();
@@ -42,6 +44,7 @@ function ajouter_info_nutri_dans_bdd($id_ingr, $calories, $lipides, $glucides, $
 	return $requete->errorInfo();
 }
 
+// Ajout dans la table REGIME
 function ajouter_regime_dans_bdd($id_ingr, $nom_regime)
 {
 	$pdo = PDO2::getInstance();

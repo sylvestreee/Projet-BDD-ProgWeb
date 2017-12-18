@@ -1,5 +1,6 @@
 <?php
 
+// Ajout dans la table RECETTE
 function ajouter_recette_dans_bdd($nom_recette, $descriptif, $id_utilisateur, $auteur, $difficulte, $prix, $nb_personnes) 
 {
 	$pdo = PDO2::getInstance();

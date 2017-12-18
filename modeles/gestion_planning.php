@@ -1,5 +1,6 @@
 <?php
 
+// Ajout dans la table REPAS
 function ajouter_repas_dans_bdd($id_utilisateur, $date_repas, $heure) 
 {
 	$pdo = PDO2::getInstance();
@@ -20,6 +21,7 @@ function ajouter_repas_dans_bdd($id_utilisateur, $date_repas, $heure)
 	return $requete->errorInfo();
 }
 
+// Ajout dans la table REPAS_RECETTE
 function ajouter_repas_recette_dans_bdd($id_recette, $id_repas) 
 {
 	$pdo = PDO2::getInstance();
@@ -38,7 +40,7 @@ function ajouter_repas_recette_dans_bdd($id_recette, $id_repas)
 	return $requete->errorInfo();
 }
 
-// Recherche les recettes présents dans la BDD
+// Recherche les recettes présentes dans la BDD
 function recherche_recette()
 {
 	$pdo = PDO2::getInstance();
@@ -56,7 +58,7 @@ function recherche_recette()
 	return false;
 }
 
-// Recherche les recettes plannifiées par un utilisateur à partir de l'id de l'utilisateur et d'une date
+// Recherche les recettes plannifiées par un utilisateur à une date donnée à partir de son identifiant
 function recherche_recette_date($id_utilisateur, $date_repas)
 {
 	$pdo = PDO2::getInstance();

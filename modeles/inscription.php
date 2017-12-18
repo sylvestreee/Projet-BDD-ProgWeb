@@ -1,5 +1,6 @@
 <?php
 
+// Ajout dans la table UTILISATEUR
 function ajouter_membre_dans_bdd($nom_utilisateur, $prenom, $nom, $mdp, $adresse_email) {
 
 	$pdo = PDO2::getInstance();

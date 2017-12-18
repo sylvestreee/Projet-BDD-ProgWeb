@@ -87,11 +87,13 @@ else
 				{
 					$erreurs_recette[] = "Ce nom de recette est déjà utilisé.";
 				} 
+
 				else 
 				{
 					$erreurs_recette[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 				}
 			}
+
 			else 
 			{
 				$erreurs_recette[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
@@ -101,6 +103,7 @@ else
 			include CHEMIN_VUE.'recette.php';
 		}
 	} 
+
 	else 
 	{
 		// On affiche à nouveau le formulaire d'ajout de recettes
@@ -164,10 +167,10 @@ else
 		list($recette, $ingredient, $quantite_etape, $temps, $type_etape, $description) =
 		$crea_etape->get_cleaned_data('recette', 'ingredient', 'quantite_etape', 'temps', 'type_etape', 'description');
 
-		// Récupération de l'id de la recette choisie par l'utilisateur
+		// Récupération de l'identifiant de la recette choisie par l'utilisateur
 		$id_recette = recherche_id_recette_par_nom($recette);
 
-		// Récupération de l'id de l'ingrédient choisi par l'utilisateur
+		// Récupération de l'identifiant de l'ingrédient choisi par l'utilisateur
 		$id_ingr = recherche_id_ingr_par_nom($ingredient);
 
 		// Ajout de l'étape dans la base de données
@@ -179,6 +182,7 @@ else
 			// Affichage de la confirmation de l'ajout de l'étape
 			include CHEMIN_VUE.'etape_effectuee.php';
 		} 
+
 		// Gestion des doublons
 		else 
 		{
@@ -192,6 +196,7 @@ else
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
 				$erreurs_etape[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 			} 
+
 			else 
 			{
 				$erreurs_etape[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
@@ -200,6 +205,7 @@ else
 			include CHEMIN_VUE.'etape.php';
 		}
 	} 
+
 	else 
 	{
 		// On affiche à nouveau le formulaire de création d'étapes
@@ -287,12 +293,19 @@ else
 				if ($nom_ingredient == $valeur_probleme) 
 				{
 					$erreurs_ingredient[] = "Ce nom d'ingrédient est déjà utilisé.";
-				} 
+				}
+
+				else if ($nom_regime == $valeur_probleme)
+				{
+					$erreurs_ingredient[] = "Ce nom de régime est déjà utilisé.";
+				}
+
 				else 
 				{
 					$erreurs_ingredient[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 				}
 			} 
+			
 			else 
 			{
 				$erreurs_ingredient[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
@@ -301,6 +314,7 @@ else
 			include CHEMIN_VUE.'ingredient.php';
 		}
 	} 
+
 	else 
 	{
 		// On affiche à nouveau le formulaire de création d'ingrédients

@@ -1,5 +1,6 @@
 <?php
 
+// Récupération d'informations sur une recette à partir de son nom
 function info_recette($nom_recette)
 {
 	$pdo = PDO2::getInstance();
@@ -19,6 +20,8 @@ function info_recette($nom_recette)
 	return false;
 }
 
+
+// Récupération d'informations sur les étapes d'une recette à partir de son identifiant
 function info_etapes($id_recette)
 {
 	$pdo = PDO2::getInstance();

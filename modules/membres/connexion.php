@@ -68,7 +68,7 @@ session_start();
 	
 		} else {
 
-			// On réaffiche le formulaire de connexion
+			// On affiche à nouveau le formulaire de connexion
 			include CHEMIN_VUE.'formulaire_connexion.php';
 		}
 	}

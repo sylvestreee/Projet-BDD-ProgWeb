@@ -20,7 +20,7 @@ if (1 == get_magic_quotes_gpc())
 	array_walk_recursive($_COOKIE, 'remove_magic_quotes_gpc');
 }
 
-// Inclusion de Pdo2, potentiellement utile partout
+// Inclusion de pdo2, potentiellement utile partout
 include CHEMIN_LIB.'pdo2.php';
 
 // Vérifie si l'utilisateur est connecté   
