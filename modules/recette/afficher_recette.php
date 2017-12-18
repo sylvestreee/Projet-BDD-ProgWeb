@@ -29,6 +29,9 @@ if ($form_recherche_nom->is_valid($_POST))
 	
 	$info_recette = info_recette($phrase);
 
+	$id_recette = recherche_id_recette_par_nom($phrase);
+	$info_etapes = info_etapes($id_recette);
+
 	include CHEMIN_VUE.'affichage_recette.php';
 
 	/*include CHEMIN_MODELE.'recette.php';
