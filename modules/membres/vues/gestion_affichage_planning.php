@@ -11,8 +11,6 @@ echo $gest_planning;
 
 <h3> Planning de la semaine du <?php echo htmlspecialchars($monday)?> au <?php echo htmlspecialchars($sunday)?> </h3>
 
-// PLANNING
-
 <?php
 
 echo "Lundi ".$monday."<br>"."<br>";
