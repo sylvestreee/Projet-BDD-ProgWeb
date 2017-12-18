@@ -2,7 +2,7 @@
 
 if(empty($info_recette))
 {
-	echo "Aucune recette trouvée"."<br>";
+	echo "Aucune recette trouvée"."<br>"."<br>";
 }
 
 else

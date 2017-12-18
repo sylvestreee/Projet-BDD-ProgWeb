@@ -4,13 +4,13 @@
 
 if(empty($id_recette))
 {
-	echo "Aucune recette trouvée"."<br>";
+	echo "Aucune recette trouvée"."<br>"."<br>";
 }
 
 else
 {
 	foreach($id_recette as $r)
 	{
-		echo $r["nom_recette"]."<br>"; 
+		echo $r["nom_recette"]."<br>"."<br>"; 
 	}
 }
