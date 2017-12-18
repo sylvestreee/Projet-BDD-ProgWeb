@@ -1,4 +1,4 @@
-<h2> Rechercher : </h2>
+<h2> Rechercher une recette (via nom de recette) : </h2>
 
 <?php 
 

@@ -35,6 +35,32 @@ else
 	include CHEMIN_VUE.'rechercher_recette.php';	
 }
 
+// RECHERCHE DES RECETTES (VIA INGREDIENTS)
+
+$form_recherche_ingr = new Form('formulaire_recherche_nom');
+
+$form_recherche_ingr 	->method('POST');
+
+$form_recherche_ingr 	->add('Text', 'phrase_ingr')
+			    		->label("Rechercher une recette");
+
+$form_recherche_ingr 	->add('Submit', 'submit')
+				  		->value("Rechercher");
+
+if ($form_recherche_ingr->is_valid($_POST)) 
+{	
+	$phrase_ingr = $form_recherche_ingr->get_cleaned_data('phrase_ingr');
+
+	$id_recette = recherche_recette_par_nom($phrase_ingr);
+
+	include CHEMIN_VUE.'resultat_rechercher.php';
+}
+
+else
+{
+	include CHEMIN_VUE.'rechercher_ingredient.php';	
+}
+
 // AFFICHAGE DES RECETTES
 
 $affichage_recette = new Form('affichage_recette');

@@ -1,4 +1,4 @@
-<h2> Afficher : </h2>
+<h2> Afficher une recette : </h2>
 
 <?php 
 
