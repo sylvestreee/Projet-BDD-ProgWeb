@@ -51,7 +51,7 @@ if ($form_recherche_ingr->is_valid($_POST))
 {	
 	$phrase_ingr = $form_recherche_ingr->get_cleaned_data('phrase_ingr');
 
-	$id_ingr = recherche_recette_par_nom($phrase_ingr);
+	$id_ingr = recherche_recette_par_ingr($phrase_ingr);
 
 	include CHEMIN_VUE.'resultat_ingr.php';
 }
