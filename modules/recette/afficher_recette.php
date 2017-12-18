@@ -29,7 +29,7 @@ if ($form_recherche_nom->is_valid($_POST))
 	
 	$info_recette = info_recette($phrase);
 
-	include CHEMIN_VUE.'affichage_info_recette.php';
+	include CHEMIN_VUE.'affichage_recette.php';
 
 	/*include CHEMIN_MODELE.'recette.php';
 	
