@@ -1,3 +1,5 @@
-<h2> Recette : <?php echo htmlspecialchars($nom_recette)?> </h2>
+<h2> Afficher : </h2>
 
-<?php echo $affichage_recette; ?>
+<?php 
+
+echo $affichage_recette;

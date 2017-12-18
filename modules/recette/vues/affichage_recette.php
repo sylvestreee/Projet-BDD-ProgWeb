@@ -1,3 +1,5 @@
+<h2> Affichage de la recette : <?php echo htmlspecialchars($nom_recette)?>
+
 <?php
 
 if(empty($info_recette))
