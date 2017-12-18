@@ -1,4 +1,4 @@
-<h2> Affichage de la recette : <?php echo htmlspecialchars($nom_recette)?>
+<h2> Affichage de la recette : <?php echo htmlspecialchars($nom_recette)?> </h2>
 
 <?php
 
