@@ -31,7 +31,7 @@ function info_etapes($id_recette)
 		WHERE re.id_recette = :id_recette
 		GROUP BY e.id_etape");
 
-	$requete->bindValue(':id_recette', $id_recette)
+	$requete->bindValue(':id_recette', $id_recette);
 	$requete->execute();
 
 	if ($result = $requete->fetchAll(PDO::FETCH_ASSOC)) 
