@@ -16,10 +16,10 @@ echo $gest_planning;
 echo "Lundi ".$monday."<br>"."<br>";
 echo "Mardi ".$tuesday."<br>"."<br>";
 echo "Mercredi ".$wednesday."<br>"."<br>";
-echo "Mardi ".$thursday."<br>"."<br>";
-echo "Lundi ".$friday."<br>"."<br>";
-echo "Lundi ".$saturday."<br>"."<br>";
-echo "Lundi ".$sunday."<br>"."<br>";
+echo "Jeudi ".$thursday."<br>"."<br>";
+echo "Vendredi ".$friday."<br>"."<br>";
+echo "Samedi ".$saturday."<br>"."<br>";
+echo "Dimanche ".$sunday."<br>"."<br>";
 
 ?>
 
