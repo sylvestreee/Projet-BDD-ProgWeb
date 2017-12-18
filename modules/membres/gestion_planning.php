@@ -39,3 +39,4 @@ else
 					  ->value("Ajouter la recette");
 
 	include CHEMIN_VUE.'gestion_affichage_planning';
+}
