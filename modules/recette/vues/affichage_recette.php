@@ -11,7 +11,8 @@ $nb = 1;
 
 foreach($info_etapes as $e)
 {
-	"<br>".echo "Etape n°".$nb; $nb++;
+	echo "Etape n°".$nb."<br>"; 
+	$nb++;
 
 	echo "Description : ".$e["description"]."<br>"; 
 	echo "Nom de l'ingrédient : ".$e["nom_ingr"]."<br>";
