@@ -37,7 +37,7 @@ else
 
 // RECHERCHE DES RECETTES (VIA INGREDIENTS)
 
-$form_recherche_ingr = new Form('formulaire_recherche_nom');
+$form_recherche_ingr = new Form('formulaire_recherche_ingr');
 
 $form_recherche_ingr 	->method('POST');
 
