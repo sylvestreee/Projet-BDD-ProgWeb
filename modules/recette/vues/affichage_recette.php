@@ -11,6 +11,7 @@ $nb = 1;
 
 foreach($info_etapes as $e)
 {
+	"<br>";
 	echo "Etape n°".$nb."<br>"; 
 	$nb++;
 
