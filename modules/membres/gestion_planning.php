@@ -12,6 +12,7 @@ else
 {
 	include CHEMIN_LIB.'form.php';
 	include CHEMIN_MODELE.'gestion_planning.php';
+	include CHEMIN_MODELE.'etape.php';
 
 //AJOUT REPAS
 
@@ -39,7 +40,7 @@ else
 	$gest_planning    ->add('Text', 'recette_planning')
 				      ->label("Recette choisie");
 
-	$gest_planning    ->add('Date', 'date')
+	$gest_planning    ->add('Date', 'date_repas')
 					  ->format('dd/mm/yy')
 					  ->label("Date du repas (dd/mm/yy)");
 
@@ -50,5 +51,68 @@ else
 	$gest_planning 	  ->add('Submit', 'recette')
 					  ->value("Ajouter la recette");
 
+
+	//Création d'un tableau des erreurs
+	$erreurs_planning = array();
+
+	// Validation des champs suivant des règles
+	if ($gest_planning->is_valid($_POST)) 
+	{
+		// Récupération des informations du formulaire
+		list($recette_planning, $date_repas, $heure) =
+		$crea_recette->get_cleaned_data('recette_planning', 'date_repas', 'heure');
+		
+		// Ajout de la recette dans la base de données
+		$id_repas = ajouter_repas_dans_bdd($_SESSION['id'], $date_repas, $heure);
+
+		// Si la recette a bien été ajoutée à la BDD
+		if (ctype_digit($id_repas)) 
+		{
+			$id_recette = recherche_id_recette_par_nom($recette_planning);
+
+			$id_repas_recette = ajouter_repas_recette_dans_bdd($id_recette, $id_repas);
+
+			if (ctype_digit($id_repas_recette))
+			{
+				// Affichage de la confirmation de l'ajout de la recette
+				include CHEMIN_VUE.'planning_recette_effectuee.php';
+			}
+		} 
+
+		// Gestion des doublons
+		else 
+		{
+			// Changement de nom de variable (plus lisible)
+			$erreur =& $id_recette;
+
+			// Vérificaton que l'erreur concerne un doublon
+			if (23000 == $erreur[0]) 
+			{	
+				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
+				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
+				$valeur_probleme = $valeur_probleme[1];
+				if ($nom_recette == $valeur_probleme) 
+				{
+					$erreurs_planning[] = "Ce nom de recette est déjà utilisé.";
+				} 
+				else 
+				{
+					$erreurs_planning[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
+				}
+			}
+			else 
+			{
+				$erreurs_planning[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
+			}
+
+			// On réaffiche le formulaire d'ajout de recettes
+			include CHEMIN_VUE.'recette.php';
+		}
+	} 
+	else 
+	{
+		// On affiche à nouveau le formulaire d'ajout de recettes
+		include CHEMIN_VUE.'recette.php';
+	}
 	include CHEMIN_VUE.'gestion_affichage_planning.php';
 }
