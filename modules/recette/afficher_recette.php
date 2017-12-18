@@ -51,7 +51,7 @@ if ($affichage_recette->is_valid($_POST))
 	
 	$info_recette = info_recette($nom_recette);
 
-	$id_recette = recherche_id_recette_par_nom($pnom_recette);
+	$id_recette = recherche_id_recette_par_nom($nom_recette);
 	$info_etapes = info_etapes($id_recette);
 
 	include CHEMIN_VUE.'affichage_recette.php';
