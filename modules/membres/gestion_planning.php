@@ -67,12 +67,14 @@ else
 		// Si la recette a bien été ajoutée à la BDD
 		if (ctype_digit($id_repas)) 
 		{
+			echo "yes";
 			$id_recette = recherche_id_recette_par_nom($recette_planning);
 
 			$id_repas_recette = ajouter_repas_recette_dans_bdd($id_recette, $id_repas);
 
 			if (ctype_digit($id_repas_recette))
 			{
+				echo "yes2";
 				// Affichage de la confirmation de l'ajout de la recette
 				include CHEMIN_VUE.'planning_recette_effectuee.php';
 			}
@@ -83,12 +85,14 @@ else
 		// Gestion des doublons
 		else 
 		{
+			echo "yes3";
 			// Changement de nom de variable (plus lisible)
 			$erreur =& $id_recette;
 
 			// Vérificaton que l'erreur concerne un doublon
 			if (23000 == $erreur[0]) 
 			{	
+				echo "yes4";
 				// Le code d'erreur 23000 signifie "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
 				$valeur_probleme = $valeur_probleme[1];
@@ -96,24 +100,30 @@ else
 				{
 					$erreurs_planning[] = "Ce nom de recette est déjà utilisé.";
 				} 
+
 				else 
 				{
+					echo "yes4";
 					$erreurs_planning[] = "Erreur ajout SQL : doublon non identifié présent dans la base de données.";
 				}
 			}
+
 			else 
 			{
+				echo "yes4";
 				$erreurs_planning[] = sprintf("Erreur ajout SQL : cas non traité (SQLSTATE = %d).", $erreur[0]);
 			}
 
+			echo "yes5";
 			// On réaffiche le formulaire d'ajout de recettes
-			include CHEMIN_VUE.'recette.php';
+			include CHEMIN_VUE.'gestion_affichage_planning.php';
 		}
 	} 
+
 	else 
 	{
+		echo "yes6";
 		// On affiche à nouveau le formulaire d'ajout de recettes
-		include CHEMIN_VUE.'recette.php';
+		include CHEMIN_VUE.'gestion_affichage_planning.php';
 	}
-	include CHEMIN_VUE.'gestion_affichage_planning.php';
 }
