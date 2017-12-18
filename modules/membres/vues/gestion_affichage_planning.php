@@ -7,7 +7,7 @@
 echo $recette;
 echo $gest_planning;
 
-$monday = date('dd/mm', strtotime('monday this week'));
-$sunday = date('dd/mm', strtotime('sunday this week'));
+$monday = date('d/m', strtotime('monday this week'));
+$sunday = date('d/m', strtotime('sunday this week'));
 
-echo "Planning de la semaine du".$monday." au ".$sunday;
+echo "Planning de la semaine du ".$monday." au ".$sunday;
